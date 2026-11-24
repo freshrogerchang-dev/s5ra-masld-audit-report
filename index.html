@@ -233,11 +233,24 @@
         <div class="kpi-val sig">HR 1.718</div>
         <div class="kpi-sub">95% CI 1.431–2.063 · p &lt; 0.0001<br/>H25 HR 1.004 (p = 0.9654)</div>
       </div>
+      <div class="kpi">
+        <div class="kpi-label">S5R-A 10y 4P-MACE</div>
+        <div class="kpi-val sig">HR 1.469</div>
+        <div class="kpi-sub">95% CI 1.309–1.649 · p &lt; 0.0001<br/>HF HR 1.426 · Death HR 1.794</div>
+      </div>
     </div>
 
     <div class="callout accent">
       <strong>主軸敘事核心（為何以 S5R-A 為主軸）：</strong>
       在基線<strong>尚未確診任何代謝疾病（排除 15 項 ICD-10 診斷，如 E66、E11、I10–I1A、E78 等）</strong>的 40–90 歲男性中，低總睪固酮（≤300 ng/dL）在 1:1 PSM 完全平衡（所有 41 項共變項 SMD &lt; 0.082，BMI 26.4 vs 26.3 SMD 0.043）下，仍顯著預測 5 年（HR 1.475）與 10 年（HR 1.372）新發 MASLD、10 年 <strong>MASH（K75.81, HR 2.124）</strong> 以及各項新發代謝異常（Obesity、T2DM、Prediabetes、HTN，HR 1.35–1.68），而白內障陰性對照（H25）完全無差異。然而，在同世代低 T 患者中啟動 TRT（<code>S5R-A TRT-NU</code>）並未降低 5 年或 10 年 MASLD 或代謝疾病風險。
+    </div>
+
+    <div class="callout">
+      <strong>納入組別設計演進（為何參考 Stokar et al. 2026 後未沿用其寬鬆定義）：</strong>
+      本計畫初期曾參考近期發表之 TriNetX 荷爾蒙與 MASLD 研究（<em>Stokar &amp; Dresner-Pollak, Diabetes Metab Res Rev 2026; doi:10.1002/dmrr.70121</em>，內部標記為 P4 測試），惟經方法學稽核後決定<strong>不沿用其寬鬆入組方式</strong>，而升級為現行 S5R-A 架構，關鍵原因有三：
+      <strong>(1) 避免基線代謝混淆</strong>：Stokar 2026 入組時未排除既有代謝疾病、亦未強制基線 CMRF；我們改以 <strong>S5R-A（排除基線 15 項確診代謝疾病）</strong>為主軸，並以 <strong>P3-2TA（具基線代謝風險）</strong>與 <strong>S5-2TA（排除次臨床檢驗異常）</strong>作跨光譜敏感度驗證；
+      <strong>(2) 杜絕未來資訊與不死時間偏差</strong>：Stokar 2026 於對照組與荷爾蒙治療排除使用了 index 之後的追蹤期資訊（conditioning on future information）；我們改將 1–365 天暴露確認期與 <strong>Day 365 Landmark（結局自第 365 天起算）</strong>嚴格對齊，並加做 <strong>SA-Lag2（Day 730 起算）</strong>；
+      <strong>(3) 擴展結局定義與肝臟分期</strong>：Stokar 2026 僅以單一代碼 <code>K76.0</code> 定義結局；我們主分析涵蓋 <code>K76.0 OR K75.81</code>，並獨立驗證純 <code>K76.0</code>（SA-K760）、<code>K75.81</code>（MASH）與 <code>K74</code>（肝纖維化／肝硬化）。
     </div>
 
     <div class="card">
@@ -410,7 +423,95 @@
     </div>
 
     <div class="card">
-      <h2>三、S5R-A TRT 新使用者分析（`S5R-A TRT-NU`） <span class="badge badge-purple">15757281 vs 15757397</span></h2>
+      <h2>三、心血管重大事件（MACE）與全因死亡（10 年與 5 年，6 項結局） <span class="badge badge-danger">新完成</span></h2>
+      <p class="card-desc">
+        10 年版 ID <span class="code">6b05899d0b258a111a34b320</span>（5,139 對，Max SMD 0.0792，incomplete=true）；5 年版 ID <span class="code">6b058d85009e92e9b7879d3f</span>（5,411 對，Max SMD 0.0739，<strong>incomplete=false</strong>）。兩組皆 <strong>0 項 SMD &gt; 0.1</strong>，且所有 12 項比例風險檢定（PH p）皆 &gt; 0.11。
+      </p>
+      <div class="callout warn">
+        <strong>臨床判讀重點：</strong>在無既有確診代謝疾病的低 T 男性中，5 年與 10 年 <strong>3P-MACE（HR 1.348 / 1.457）</strong>與 <strong>4P-MACE（HR 1.338 / 1.469）</strong>均顯著上升；拆解單一組成後，風險主要由<strong>心臟衰竭（I50，HR 1.424 / 1.426）</strong>與<strong>全因死亡（Deceased，HR 1.857 / 1.794）</strong>驅動，而急性心肌梗塞（I21）與中風（I63/I61）呈輕度未達顯著趨勢（10 年 Stroke RD p=0.0372, HR 1.249 p=0.0729）。此外，全因死亡率顯著較高亦提醒我們解讀肝臟結局時應留意死亡競爭風險（competing risk）。
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>心血管／死亡結局（ICD-10-CM）</th>
+              <th>10y Events (Low T vs Normal T)</th>
+              <th>10y HR (95% CI)</th>
+              <th>10y Log-rank p</th>
+              <th>10y PH p</th>
+              <th>5y Events (Low T vs Normal T)</th>
+              <th>5y HR (95% CI)</th>
+              <th>5y Log-rank p</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>O1 3P-MACE (`I21/I63/I61/Deceased`)</strong></td>
+              <td>583/5,055 (11.53%) vs 392/5,082 (7.71%)</td>
+              <td class="sig-text">1.457 (1.282–1.656)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+              <td>0.4573</td>
+              <td>298/5,321 (5.60%) vs 215/5,364 (4.01%)</td>
+              <td class="sig-text">1.348 (1.131–1.606)</td>
+              <td class="sig-text">0.0008</td>
+            </tr>
+            <tr>
+              <td><strong>O2 4P-MACE (`+ I50` 心衰)</strong></td>
+              <td>716/5,016 (14.27%) vs 482/5,063 (9.52%)</td>
+              <td class="sig-text">1.469 (1.309–1.649)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+              <td>0.7398</td>
+              <td>367/5,276 (6.96%) vs 268/5,341 (5.02%)</td>
+              <td class="sig-text">1.338 (1.143–1.566)</td>
+              <td class="sig-text">0.0003</td>
+            </tr>
+            <tr>
+              <td><strong>O3 Acute MI (`I21`)</strong></td>
+              <td>157/5,111 (3.07%) vs 130/5,113 (2.54%)</td>
+              <td class="ns-text">1.167 (0.925–1.473)</td>
+              <td>0.1916</td>
+              <td>0.5229</td>
+              <td>78/5,381 (1.45%) vs 65/5,388 (1.21%)</td>
+              <td class="ns-text">1.160 (0.834–1.612)</td>
+              <td>0.3775</td>
+            </tr>
+            <tr>
+              <td><strong>O4 Stroke (`I63 OR I61`)</strong></td>
+              <td>148/5,101 (2.90%) vs 115/5,115 (2.25%)</td>
+              <td class="ns-text">1.249 (0.979–1.594)</td>
+              <td>0.0729 *(RD p=0.037)*</td>
+              <td>0.9836</td>
+              <td>69/5,368 (1.29%) vs 65/5,393 (1.21%)</td>
+              <td class="ns-text">1.028 (0.732–1.442)</td>
+              <td>0.8738</td>
+            </tr>
+            <tr>
+              <td><strong>O5 Heart Failure (`I50`)</strong></td>
+              <td>272/5,099 (5.33%) vs 186/5,114 (3.64%)</td>
+              <td class="sig-text">1.426 (1.183–1.718)</td>
+              <td class="sig-text">0.0002</td>
+              <td>0.9851</td>
+              <td>132/5,365 (2.46%) vs 90/5,384 (1.67%)</td>
+              <td class="sig-text">1.424 (1.089–1.861)</td>
+              <td class="sig-text">0.0094</td>
+            </tr>
+            <tr>
+              <td><strong>O6 All-Cause Death (`Deceased`)</strong></td>
+              <td>383/5,121 (7.48%) vs 208/5,130 (4.06%)</td>
+              <td class="sig-text">1.794 (1.515–2.124)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+              <td>0.1109</td>
+              <td>205/5,393 (3.80%) vs 107/5,404 (1.98%)</td>
+              <td class="sig-text">1.857 (1.470–2.346)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>四、S5R-A TRT 新使用者分析（`S5R-A TRT-NU`） <span class="badge badge-purple">15757281 vs 15757397</span></h2>
       <p class="card-desc">
         在 S5R-A 低 T 母體（`15755247`）內比較 0–180 天啟動 TRT（n=876）vs 0–365 天未用 TRT（n=4,246）；45 項共變項（移除 `HS100`、補入 `E29.1/N52/F32/F33` 與 `LG11398-1` 三分層 `0–200 / 200–250 / 250–300`）。10 年版 ID <span class="code">6b0470a90b258a111a30e48b</span>（830 對，T SMD 0.0574，BMI SMD 0.0228）；5 年版 ID <span class="code">6b04c53a0b258a111a322e8a</span>（788 對，T SMD 0.0153，BMI SMD 0.0352）。
       </p>
@@ -760,7 +861,9 @@
           <h3><span class="step-num">4</span>Results &amp; Discussion（三大核心論點）</h3>
           <p><strong>論點 A（肝臟階段特異性）</strong>：低 T 顯著提升 10 年 MASLD（HR 1.372）、單純脂肪肝（HR 1.587）與 <strong>MASH（HR 2.124, p=0.0166）</strong>，但未提升 10 年肝硬化（K74, HR 0.927）——符合在「基線無確診代謝疾病」的相對早期世代中，10 年足以觀察到脂肪變性與發炎（MASH），而進展至肝硬化常需更長自然病史（對照 <strong>Sarkar 2021</strong>）。<br/>
           <strong>論點 B（代謝惡化先行與中介角色）</strong>：低 T 同步推升 Obesity、T2DM、Prediabetes、HTN（HR 1.35–1.68），顯示低 T 可能透過內臟脂肪堆積與胰島素阻抗驅動 MASLD（與 <strong>Seo 2015</strong> 差異可能源於樣本數、確認性低 T 定義與 10 年追蹤期）；且次分析顯示效應集中於 40–64 歲中年男性與白人／非西語裔。<br/>
-          <strong>論點 C（TRT 中性結果的審慎判讀）</strong>：無論在 S5R-A（10y HR 1.191, 5y HR 1.004）或路線一（NU/T2/T5 HR 0.98–1.16），現實世界 TRT 均未降低 MASLD 風險（對照女性 HRT 研究 <strong>Henney 2026</strong>），可能反映指徵混淆、治療遵從度／劑量異質性，或外源性補充無法單獨逆轉已啟動的代謝軌跡；需透過隨機試驗驗證，切勿過度宣稱因果無效。</p>
+          <strong>論點 C（TRT 中性結果的審慎判讀）</strong>：無論在 S5R-A（10y HR 1.191, 5y HR 1.004）或路線一（NU/T2/T5 HR 0.98–1.16），現實世界 TRT 均未降低 MASLD 風險（對照女性 HRT 研究 <strong>Henney 2026</strong>），可能反映指徵混淆、治療遵從度／劑量異質性，或外源性補充無法單獨逆轉已啟動的代謝軌跡；需透過隨機試驗驗證，切勿過度宣稱因果無效。<br/>
+          <strong>論點 D（相較既有 TriNetX 研究之方法學優勢 — 直接對照 Stokar 2026）</strong>：於 Discussion 獨立設段說明本研究雖借鏡 <strong>Stokar 2026</strong> 之 TriNetX PSM 與次分析架構，但針對其三大限制完成關鍵升級：① 基線即排除 15 項確診代謝疾病（並以 P3-2TA 與 S5-2TA 橫跨三個代謝光譜驗證）；② 以 Day 365 Landmark（搭配 SA-Lag2 Day 730）取代追蹤期後設排除，徹底消除未來資訊與不死時間偏差；③ 由單一 <code>K76.0</code> 擴展至 <code>K76.0/K75.81</code> 複合結局、純 <code>K76.0</code> 敏感度及 <code>K75.81</code>（MASH）／<code>K74</code>（肝硬化）分期評估，大幅提升因果時序可信度。<br/>
+          <strong>論點 E（心血管 MACE 與全因死亡延伸）</strong>：在無基線確診代謝疾病族群中，低 T 同時顯著增加 5 年與 10 年 3P/4P-MACE（HR 1.34–1.47），且主要由心臟衰竭（I50, HR ~1.42）與全因死亡（HR 1.79–1.86）驅動，呼應 <strong>Cho 2026</strong> 對血管併發症之關注，並提醒於 Limitations 說明全因死亡之競爭風險（competing risk）對 10 年肝硬化（K74）觀察可能造成的低估效應。</p>
         </div>
       </div>
     </div>
