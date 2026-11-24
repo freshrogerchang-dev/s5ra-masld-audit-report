@@ -1,0 +1,1062 @@
+<!DOCTYPE html>
+<html lang="zh-Hant">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<title>S5R-A Low Testosterone &amp; MASLD — 分析師審核與論文架構報告 (TriNetX Study 410562)</title>
+<style>
+  :root {
+    --bg: #f8fafc;
+    --surface: #ffffff;
+    --surface-2: #f1f5f9;
+    --border: #e2e8f0;
+    --text: #0f172a;
+    --muted: #475569;
+    --light-muted: #64748b;
+    --primary: #1d4ed8;
+    --primary-soft: #eff6ff;
+    --accent: #0f766e;
+    --accent-soft: #f0fdfa;
+    --danger: #b91c1c;
+    --danger-soft: #fef2f2;
+    --warn: #b45309;
+    --warn-soft: #fffbeb;
+    --purple: #6d28d9;
+    --purple-soft: #f5f3ff;
+    --radius: 12px;
+    --shadow: 0 1px 3px rgba(15, 23, 42, 0.06), 0 1px 2px rgba(15, 23, 42, 0.04);
+  }
+  * { box-sizing: border-box; }
+  body {
+    margin: 0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Noto Sans TC", "Microsoft JhengHei", Roboto, sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.6;
+    font-size: 14px;
+  }
+  header.hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e3a8a 55%, #0f766e 100%);
+    color: #fff;
+    padding: 28px 32px 22px;
+    border-bottom: 1px solid rgba(255,255,255,0.12);
+  }
+  .hero-inner { max-width: 1360px; margin: 0 auto; }
+  .hero-badges { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 10px; }
+  .badge {
+    display: inline-flex; align-items: center; gap: 5px;
+    padding: 3px 10px; border-radius: 999px; font-size: 12px; font-weight: 600;
+  }
+  .badge-hero { background: rgba(255,255,255,0.15); color: #e2e8f0; border: 1px solid rgba(255,255,255,0.22); }
+  .badge-primary { background: var(--primary-soft); color: var(--primary); }
+  .badge-accent { background: var(--accent-soft); color: var(--accent); }
+  .badge-danger { background: var(--danger-soft); color: var(--danger); }
+  .badge-warn { background: var(--warn-soft); color: var(--warn); }
+  .badge-purple { background: var(--purple-soft); color: var(--purple); }
+  .badge-neutral { background: var(--surface-2); color: var(--muted); }
+  h1 { margin: 0 0 6px; font-size: 24px; font-weight: 700; letter-spacing: -0.01em; }
+  .hero-sub { margin: 0; color: #cbd5e1; font-size: 14px; max-width: 980px; }
+
+  nav.tabs {
+    position: sticky; top: 0; z-index: 50;
+    background: rgba(255,255,255,0.95);
+    backdrop-filter: blur(8px);
+    border-bottom: 1px solid var(--border);
+    padding: 0 24px;
+  }
+  .tabs-inner {
+    max-width: 1360px; margin: 0 auto;
+    display: flex; gap: 4px; overflow-x: auto;
+  }
+  .tab-btn {
+    border: none; background: transparent; cursor: pointer;
+    padding: 13px 16px; font-size: 13.5px; font-weight: 600; color: var(--muted);
+    border-bottom: 3px solid transparent; white-space: nowrap; transition: all 0.15s;
+  }
+  .tab-btn:hover { color: var(--primary); background: var(--primary-soft); }
+  .tab-btn.active { color: var(--primary); border-bottom-color: var(--primary); }
+
+  main { max-width: 1360px; margin: 24px auto 64px; padding: 0 24px; }
+  .tab-panel { display: none; animation: fadeIn 0.2s ease; }
+  .tab-panel.active { display: block; }
+  @keyframes fadeIn { from { opacity: 0; transform: translateY(4px); } to { opacity: 1; transform: none; } }
+
+  .kpi-grid {
+    display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 14px; margin-bottom: 22px;
+  }
+  .kpi {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 16px 18px; box-shadow: var(--shadow);
+  }
+  .kpi-label { font-size: 12px; color: var(--light-muted); font-weight: 600; text-transform: uppercase; letter-spacing: 0.03em; }
+  .kpi-val { font-size: 24px; font-weight: 800; margin: 4px 0 2px; color: var(--text); }
+  .kpi-val.sig { color: var(--danger); }
+  .kpi-val.null { color: var(--accent); }
+  .kpi-val.blue { color: var(--primary); }
+  .kpi-sub { font-size: 12px; color: var(--muted); }
+
+  .card {
+    background: var(--surface); border: 1px solid var(--border); border-radius: var(--radius);
+    padding: 20px 22px; margin-bottom: 20px; box-shadow: var(--shadow);
+  }
+  .card h2 {
+    margin: 0 0 6px; font-size: 17px; font-weight: 700; display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .card h3 { margin: 18px 0 8px; font-size: 14.5px; font-weight: 700; color: #1e293b; }
+  .card-desc { margin: 0 0 14px; color: var(--muted); font-size: 13.5px; }
+
+  .callout {
+    border-left: 4px solid var(--primary); background: var(--primary-soft);
+    padding: 12px 16px; border-radius: 0 8px 8px 0; margin: 12px 0 16px; font-size: 13.5px;
+  }
+  .callout.warn { border-left-color: var(--warn); background: var(--warn-soft); }
+  .callout.accent { border-left-color: var(--accent); background: var(--accent-soft); }
+  .callout.danger { border-left-color: var(--danger); background: var(--danger-soft); }
+
+  .table-wrap { overflow-x: auto; margin-top: 8px; border: 1px solid var(--border); border-radius: 8px; }
+  table { width: 100%; border-collapse: collapse; font-size: 12.8px; }
+  th {
+    background: var(--surface-2); color: #334155; font-weight: 700; text-align: left;
+    padding: 9px 10px; border-bottom: 1px solid var(--border); white-space: nowrap;
+  }
+  td {
+    padding: 8px 10px; border-bottom: 1px solid var(--border); vertical-align: top;
+  }
+  tr:last-child td { border-bottom: none; }
+  tr:hover td { background: #f8fafc; }
+  .num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+  .sig-text { color: var(--danger); font-weight: 700; }
+  .ns-text { color: var(--muted); }
+  .code {
+    font-family: ui-monospace, SFMono-Regular, Menlo, Consolas, monospace;
+    font-size: 11.8px; background: var(--surface-2); padding: 1px 5px; border-radius: 4px; color: #0f172a;
+  }
+
+  .grid-2 { display: grid; grid-template-columns: repeat(auto-fit, minmax(460px, 1fr)); gap: 18px; }
+  .forest-wrap { overflow-x: auto; padding: 10px 0; }
+  .filter-bar { display: flex; flex-wrap: wrap; gap: 8px; margin-bottom: 14px; }
+  .filter-pill {
+    border: 1px solid var(--border); background: var(--surface); color: var(--muted);
+    padding: 5px 12px; border-radius: 999px; font-size: 12.5px; font-weight: 600; cursor: pointer;
+  }
+  .filter-pill.active { background: var(--primary); color: #fff; border-color: var(--primary); }
+
+  .ref-card {
+    border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 10px;
+    background: #fff; transition: border-color 0.15s;
+  }
+  .ref-card:hover { border-color: #93c5fd; }
+  .ref-head { display: flex; justify-content: space-between; align-items: flex-start; gap: 10px; flex-wrap: wrap; }
+  .ref-title { font-weight: 700; color: var(--text); font-size: 13.8px; }
+  .ref-meta { font-size: 12.3px; color: var(--light-muted); margin: 3px 0 6px; }
+  .ref-usage { font-size: 13px; color: #1e293b; background: var(--surface-2); padding: 8px 10px; border-radius: 6px; }
+
+  .step-box {
+    border: 1px solid var(--border); border-radius: 10px; padding: 14px 16px; margin-bottom: 12px;
+    background: #fff;
+  }
+  .step-num {
+    display: inline-flex; align-items: center; justify-content: center;
+    width: 24px; height: 24px; border-radius: 999px; background: var(--primary); color: #fff;
+    font-size: 12px; font-weight: 700; margin-right: 8px;
+  }
+  footer {
+    text-align: center; color: var(--light-muted); font-size: 12px; padding: 24px; border-top: 1px solid var(--border);
+  }
+  @media print {
+    nav.tabs, .filter-bar { display: none !important; }
+    .tab-panel { display: block !important; page-break-after: always; }
+    body { background: #fff; }
+  }
+</style>
+</head>
+<body>
+
+<header class="hero">
+  <div class="hero-inner">
+    <div class="hero-badges">
+      <span class="badge badge-hero">TriNetX Study 410562 · testosterone and MAFLD</span>
+      <span class="badge badge-hero">US Collaborative Network</span>
+      <span class="badge badge-hero">Primary Axis: S5R-A (2011–2020)</span>
+      <span class="badge badge-hero">Updated: 2026-11-24</span>
+    </div>
+    <h1>低睪固酮與 MASLD、MASH 及代謝異常之長期風險：S5R-A 主軸審核報告</h1>
+    <p class="hero-sub">
+      以 <strong>S5R-A（2011–2020 無既有確診代謝疾病男性世代，n = 5,396 vs 80,493）</strong> 為研究主軸，整合 5 年／10 年 MASLD、MASH（K75.81）、肝硬化（K74）、代謝異常（O3–O8）、TRT 新使用者分析（S5R-A TRT-NU）、5 大內部敏感度測試、7 組人口學次分析、跨路線敏感度對照（路線一 P3-2TA 與路線二 S5-2TA）、EndNote 文獻引用落點與 TriNetX 分析師稽核步驟。
+    </p>
+  </div>
+</header>
+
+<nav class="tabs" role="tablist">
+  <div class="tabs-inner">
+    <button class="tab-btn active" data-tab="overview">1. 主分析與核心發現</button>
+    <button class="tab-btn" data-tab="flowchart">2. 研究流程圖</button>
+    <button class="tab-btn" data-tab="sensitivity">3. 敏感度分析（含路線一／二）</button>
+    <button class="tab-btn" data-tab="subgroups">4. 人口學次分析 (Fig 3B)</button>
+    <button class="tab-btn" data-tab="writing">5. 寫作方向與 EndNote 文獻</button>
+    <button class="tab-btn" data-tab="audit">6. TriNetX 實作與分析師稽核</button>
+  </div>
+</nav>
+
+<main>
+  <!-- ================= TAB 1: OVERVIEW & PRIMARY ================= -->
+  <section id="tab-overview" class="tab-panel active">
+    <div class="kpi-grid">
+      <div class="kpi">
+        <div class="kpi-label">S5R-A 10y MASLD (主結局)</div>
+        <div class="kpi-val sig">HR 1.372</div>
+        <div class="kpi-sub">95% CI 1.120–1.681 · p = 0.0022<br/>n = 3,757 對 (Max SMD 0.0814)</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">S5R-A 10y MASH (K75.81)</div>
+        <div class="kpi-val sig">HR 2.124</div>
+        <div class="kpi-sub">95% CI 1.130–3.993 · p = 0.0166<br/>n = 4,881 對 (0 項 SMD &gt; 0.1)</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">S5R-A 10y 肝硬化 (K74)</div>
+        <div class="kpi-val null">HR 0.927</div>
+        <div class="kpi-sub">95% CI 0.644–1.334 · p = 0.6841<br/>無顯著差異（早期代謝脂肪肝階段）</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">S5R-A 10y 陰性對照 (H25)</div>
+        <div class="kpi-val null">HR 0.887</div>
+        <div class="kpi-sub">95% CI 0.720–1.093 · p = 0.2600<br/>全系列敏感度 H25 皆為無顯著</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">S5R-A TRT-NU 10y MASLD</div>
+        <div class="kpi-val blue">HR 1.191</div>
+        <div class="kpi-sub">95% CI 0.785–1.809 · p = 0.4105<br/>5y HR 1.004 · 未見 TRT 保護效應</div>
+      </div>
+      <div class="kpi">
+        <div class="kpi-label">劑量梯度 (TT400 10y)</div>
+        <div class="kpi-val sig">HR 1.718</div>
+        <div class="kpi-sub">95% CI 1.431–2.063 · p &lt; 0.0001<br/>H25 HR 1.004 (p = 0.9654)</div>
+      </div>
+    </div>
+
+    <div class="callout accent">
+      <strong>主軸敘事核心（為何以 S5R-A 為主軸）：</strong>
+      在基線<strong>尚未確診任何代謝疾病（排除 15 項 ICD-10 診斷，如 E66、E11、I10–I1A、E78 等）</strong>的 40–90 歲男性中，低總睪固酮（≤300 ng/dL）在 1:1 PSM 完全平衡（所有 41 項共變項 SMD &lt; 0.082，BMI 26.4 vs 26.3 SMD 0.043）下，仍顯著預測 5 年（HR 1.475）與 10 年（HR 1.372）新發 MASLD、10 年 <strong>MASH（K75.81, HR 2.124）</strong> 以及各項新發代謝異常（Obesity、T2DM、Prediabetes、HTN，HR 1.35–1.68），而白內障陰性對照（H25）完全無差異。然而，在同世代低 T 患者中啟動 TRT（<code>S5R-A TRT-NU</code>）並未降低 5 年或 10 年 MASLD 或代謝疾病風險。
+    </div>
+
+    <div class="card">
+      <h2>一、S5R-A 主分析完整結果：MASLD、陰性對照與代謝軌跡（O1–O8） <span class="badge badge-primary">15755247 vs 15755366</span></h2>
+      <p class="card-desc">
+        10 年版 ID <span class="code">6b045964bc9814e98f7efc57</span>（3,757 對，Max SMD 0.0814，incomplete=true）；5 年版 ID <span class="code">6b0455db009e92e9b78361f6</span>（3,882 對，Max SMD 0.0719，incomplete=true）。兩組配對後皆 <strong>0 項 SMD &gt; 0.1</strong>。
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Outcome</th>
+              <th>10y Events (Low T vs Normal T)</th>
+              <th>10y HR (95% CI)</th>
+              <th>10y Log-rank p</th>
+              <th>10y PH p</th>
+              <th>5y Events (Low T vs Normal T)</th>
+              <th>5y HR (95% CI)</th>
+              <th>5y Log-rank p</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>O1 MASLD (K76.0 / K75.81)</strong></td>
+              <td>227/3,734 (6.08%) vs 158/3,745 (4.22%)</td>
+              <td class="sig-text">1.372 (1.120–1.681)</td>
+              <td class="sig-text">0.0022</td>
+              <td>0.0805</td>
+              <td>90/3,859 (2.33%) vs 60/3,866 (1.55%)</td>
+              <td class="sig-text">1.475 (1.064–2.045)</td>
+              <td class="sig-text">0.0190</td>
+            </tr>
+            <tr>
+              <td><strong>O2 H25 白內障 (陰性對照)</strong></td>
+              <td>171/3,708 (4.61%) vs 182/3,698 (4.92%)</td>
+              <td class="ns-text">0.887 (0.720–1.093)</td>
+              <td>0.2600</td>
+              <td>0.2241</td>
+              <td>77/3,833 (2.01%) vs 78/3,833 (2.04%)</td>
+              <td class="ns-text">0.963 (0.703–1.320)</td>
+              <td>0.8154</td>
+            </tr>
+            <tr>
+              <td><strong>O3 Incident Obesity</strong></td>
+              <td>1,106/3,119 (35.46%) vs 836/3,461 (24.16%)</td>
+              <td class="sig-text">1.530 (1.399–1.674)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+              <td>0.8336</td>
+              <td>791/3,189 (24.80%) vs 583/3,612 (16.14%)</td>
+              <td class="sig-text">1.579 (1.419–1.757)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+            </tr>
+            <tr>
+              <td><strong>O4 Incident T2DM</strong></td>
+              <td>545/3,540 (15.40%) vs 334/3,669 (9.10%)</td>
+              <td class="sig-text">1.684 (1.469–1.929)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+              <td>0.0369</td>
+              <td>349/3,657 (9.54%) vs 216/3,800 (5.68%)</td>
+              <td class="sig-text">1.669 (1.408–1.977)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+            </tr>
+            <tr>
+              <td><strong>O5 Incident Prediabetes+</strong></td>
+              <td>978/2,897 (33.76%) vs 813/3,141 (25.88%)</td>
+              <td class="sig-text">1.350 (1.230–1.481)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+              <td>&lt; 0.0001</td>
+              <td>652/2,984 (21.85%) vs 480/3,254 (14.75%)</td>
+              <td class="sig-text">1.519 (1.350–1.709)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+            </tr>
+            <tr>
+              <td><strong>O6 Incident Hypertension</strong></td>
+              <td>1,296/3,339 (38.81%) vs 1,037/3,491 (29.71%)</td>
+              <td class="sig-text">1.352 (1.246–1.468)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+              <td>0.0233</td>
+              <td>938/3,449 (27.20%) vs 683/3,628 (18.83%)</td>
+              <td class="sig-text">1.484 (1.345–1.638)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+            </tr>
+            <tr>
+              <td><strong>O7 Incident Dyslipidemia</strong></td>
+              <td>758/1,891 (40.09%) vs 864/2,235 (38.66%)</td>
+              <td class="ns-text">1.028 (0.933–1.134)</td>
+              <td>0.5743</td>
+              <td>0.0018</td>
+              <td>569/1,941 (29.32%) vs 582/2,328 (25.00%)</td>
+              <td class="sig-text">1.198 (1.067–1.344)</td>
+              <td class="sig-text">0.0022</td>
+            </tr>
+            <tr>
+              <td><strong>O8 Any Metabolic Risk</strong></td>
+              <td>727/1,376 (52.83%) vs 928/1,850 (50.16%)</td>
+              <td class="ns-text">1.096 (0.995–1.208)</td>
+              <td>0.0630</td>
+              <td>&lt; 0.0001</td>
+              <td>586/1,404 (41.74%) vs 698/1,944 (35.91%)</td>
+              <td class="sig-text">1.236 (1.108–1.380)</td>
+              <td class="sig-text">0.0001</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>二、肝臟進階結局（Steatosis / MASH / Fibrosis &amp; Cirrhosis） <span class="badge badge-danger">新完成</span></h2>
+      <p class="card-desc">
+        10 年版 ID <span class="code">6b0521f5bc9814e98f8205c0</span>（4,881 對，Max SMD 0.0661）；5 年版 ID <span class="code">6b052559009e92e9b786972e</span>（4,896 對，Max SMD 0.0753）。兩者皆 <strong>0 項 SMD &gt; 0.1</strong>。
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>肝臟結局（ICD-10-CM）</th>
+              <th>10y Events (Low T vs Normal T)</th>
+              <th>10y RD% (p)</th>
+              <th>10y HR (95% CI)</th>
+              <th>10y Log-rank p</th>
+              <th>10y PH p</th>
+              <th>5y Events</th>
+              <th>5y HR (95% CI) / p</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>O1 單純脂肪肝 (`K76.0` only)</strong></td>
+              <td>267/4,858 (5.50%) vs 164/4,874 (3.37%)</td>
+              <td>+2.13% (&lt;0.0001)</td>
+              <td class="sig-text">1.587 (1.307–1.928)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+              <td>0.6434</td>
+              <td>107/4,873 vs 84/4,880</td>
+              <td>1.234 (0.927–1.642) / 0.1484</td>
+            </tr>
+            <tr>
+              <td><strong>O3 MASH / NASH (`K75.81`)</strong></td>
+              <td>31/4,877 (0.64%) vs 14/4,879 (0.29%)</td>
+              <td>+0.35% (0.0110)</td>
+              <td class="sig-text">2.124 (1.130–3.993)</td>
+              <td class="sig-text">0.0166</td>
+              <td>0.9230</td>
+              <td colspan="2" class="ns-text">TriNetX 小樣本隱蔽（5 年事件數不足）</td>
+            </tr>
+            <tr>
+              <td><strong>O4 肝纖維化／肝硬化 (`K74`)</strong></td>
+              <td>57/4,877 (1.17%) vs 59/4,873 (1.21%)</td>
+              <td>-0.04% (0.8483)</td>
+              <td class="ns-text">0.927 (0.644–1.334)</td>
+              <td>0.6841</td>
+              <td>0.4533</td>
+              <td>25/4,892 vs 23/4,892</td>
+              <td>1.053 (0.598–1.855) / 0.8587</td>
+            </tr>
+            <tr>
+              <td><strong>O2 陰性對照 (`H25`)</strong></td>
+              <td>237/4,825 (4.91%) vs 214/4,834 (4.43%)</td>
+              <td>+0.49% (0.2587)</td>
+              <td class="ns-text">1.073 (0.892–1.291)</td>
+              <td>0.4561</td>
+              <td>0.2361</td>
+              <td>114/4,840 vs 119/4,845</td>
+              <td>0.927 (0.717–1.198) / 0.5619</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>三、S5R-A TRT 新使用者分析（`S5R-A TRT-NU`） <span class="badge badge-purple">15757281 vs 15757397</span></h2>
+      <p class="card-desc">
+        在 S5R-A 低 T 母體（`15755247`）內比較 0–180 天啟動 TRT（n=876）vs 0–365 天未用 TRT（n=4,246）；45 項共變項（移除 `HS100`、補入 `E29.1/N52/F32/F33` 與 `LG11398-1` 三分層 `0–200 / 200–250 / 250–300`）。10 年版 ID <span class="code">6b0470a90b258a111a30e48b</span>（830 對，T SMD 0.0574，BMI SMD 0.0228）；5 年版 ID <span class="code">6b04c53a0b258a111a322e8a</span>（788 對，T SMD 0.0153，BMI SMD 0.0352）。
+      </p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>Outcome</th>
+              <th>10y Events (TRT vs Ctrl)</th>
+              <th>10y HR (95% CI)</th>
+              <th>10y Log-rank p</th>
+              <th>5y Events (TRT vs Ctrl)</th>
+              <th>5y HR (95% CI)</th>
+              <th>5y Log-rank p</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>O1 MASLD</strong></td><td>49/826 (5.93%) vs 40/822 (4.87%)</td><td>1.191 (0.785–1.809)</td><td>0.4105</td><td>18/785 (2.29%) vs 17/781 (2.18%)</td><td>1.004 (0.518–1.949)</td><td>0.9895</td></tr>
+            <tr><td><strong>O2 H25 (陰性對照)</strong></td><td>47/814 (5.77%) vs 43/821 (5.24%)</td><td>1.089 (0.720–1.647)</td><td>0.6859</td><td>27/774 (3.49%) vs 18/779 (2.31%)</td><td>1.450 (0.799–2.632)</td><td>0.2195</td></tr>
+            <tr><td><strong>O3 Obesity</strong></td><td>214/636 (33.65%) vs 210/718 (29.25%)</td><td>1.174 (0.970–1.420)</td><td>0.0984</td><td>145/607 (23.89%) vs 124/671 (18.48%)</td><td class="sig-text">1.273 (1.001–1.617)</td><td class="sig-text">0.0481</td></tr>
+            <tr><td><strong>O4 T2DM</strong></td><td>77/778 (9.90%) vs 88/795 (11.07%)</td><td>0.875 (0.644–1.188)</td><td>0.3906</td><td>51/736 (6.93%) vs 53/765 (6.93%)</td><td>0.953 (0.649–1.400)</td><td>0.8074</td></tr>
+            <tr><td><strong>O5 Prediabetes</strong></td><td>193/670 (28.81%) vs 199/680 (29.27%)</td><td>0.952 (0.781–1.160)</td><td>0.6233</td><td>115/631 (18.23%) vs 117/652 (17.95%)</td><td>0.958 (0.740–1.239)</td><td>0.7413</td></tr>
+            <tr><td><strong>O6 HTN</strong></td><td>208/716 (29.05%) vs 211/750 (28.13%)</td><td>0.998 (0.824–1.208)</td><td>0.9806</td><td>123/676 (18.20%) vs 135/719 (18.78%)</td><td>0.906 (0.710–1.157)</td><td>0.4302</td></tr>
+            <tr><td><strong>O7 Dyslipidemia</strong></td><td>196/444 (44.14%) vs 163/462 (35.28%)</td><td class="sig-text">1.334 (1.084–1.643)</td><td class="sig-text">0.0064</td><td>130/423 (30.73%) vs 104/440 (23.64%)</td><td>1.262 (0.975–1.633)</td><td>0.0765 (RD p=0.0191)</td></tr>
+            <tr><td><strong>O8 AnyMetRisk</strong></td><td>173/307 (56.35%) vs 175/353 (49.58%)</td><td>1.190 (0.964–1.468)</td><td>0.1048</td><td>130/296 (43.92%) vs 107/331 (32.33%)</td><td class="sig-text">1.336 (1.034–1.725)</td><td class="sig-text">0.0261</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TAB 2: FLOWCHART ================= -->
+  <section id="tab-flowchart" class="tab-panel">
+    <div class="card">
+      <h2>研究設計與篩選流程圖（STROBE / TriNetX 實作架構）</h2>
+      <p class="card-desc">以 <strong>S5R-A（無既有確診代謝疾病，2011–2020）</strong> 為主軸，右側呈現跨世代敏感度對照（路線一 P3-2TA 與路線二 S5-2TA），下方展開主結局、肝臟進展、TRT-NU、內部敏感度與人口學次分析。</p>
+      <div style="overflow-x:auto; text-align:center;">
+        <svg viewBox="0 0 1160 760" width="1120" height="735" xmlns="http://www.w3.org/2000/svg" style="max-width:100%; height:auto; font-family: -apple-system, BlinkMacSystemFont, 'Noto Sans TC', sans-serif;">
+          <defs>
+            <marker id="arr" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#475569"/>
+            </marker>
+            <marker id="arrBlue" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#1d4ed8"/>
+            </marker>
+            <marker id="arrTeal" viewBox="0 0 10 10" refX="9" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse">
+              <path d="M 0 1 L 10 5 L 0 9 z" fill="#0f766e"/>
+            </marker>
+          </defs>
+
+          <!-- Top Source Box -->
+          <rect x="260" y="16" width="520" height="68" rx="10" fill="#0f172a"/>
+          <text x="520" y="42" text-anchor="middle" fill="#ffffff" font-size="14" font-weight="700">TriNetX US Collaborative Network (Study 410562)</text>
+          <text x="520" y="62" text-anchor="middle" fill="#cbd5e1" font-size="12">男性 40–90 歲 · 2011/01/01–2020/12/31 首次血清總睪固酮檢驗 (LG11398-1, Group 1A)</text>
+
+          <!-- Arrow down to Exclusions -->
+          <line x1="520" y1="84" x2="520" y2="116" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+          <!-- Exclusion Box -->
+          <rect x="190" y="118" width="660" height="84" rx="10" fill="#fffbeb" stroke="#f59e0b" stroke-width="1.5"/>
+          <text x="520" y="140" text-anchor="middle" fill="#92400e" font-size="13.5" font-weight="700">S5R-A 嚴格基線排除條件（on or before index / 1–365d 確認）</text>
+          <text x="520" y="159" text-anchor="middle" fill="#78350f" font-size="11.5">• 排除 15 項既有確診代謝疾病（E66, E11, E13, R73, I10-I1A, E78, E88.81 等）</text>
+          <text x="520" y="176" text-anchor="middle" fill="#78350f" font-size="11.5">• 排除 28 項既往肝病/酒精/癌症/既有 MASLD · 排除既往 TRT (6碼) · 排除 -1825..-1d 既往低 T</text>
+          <text x="520" y="193" text-anchor="middle" fill="#78350f" font-size="11.5">• 確認 1–365d 內暴露持續性（Low T 再次 ≤300 且無 &gt;300；Normal T 無 ≤300）且 1 年內無死亡</text>
+
+          <!-- Split to Low T and Normal T -->
+          <path d="M 410 202 L 410 232 L 235 232 L 235 256" fill="none" stroke="#1d4ed8" stroke-width="2" marker-end="url(#arrBlue)"/>
+          <path d="M 630 202 L 630 232 L 645 232 L 645 256" fill="none" stroke="#0f766e" stroke-width="2" marker-end="url(#arrTeal)"/>
+
+          <!-- Low T Box -->
+          <rect x="60" y="258" width="350" height="74" rx="10" fill="#eff6ff" stroke="#2563eb" stroke-width="2"/>
+          <text x="235" y="281" text-anchor="middle" fill="#1e3a8a" font-size="13.5" font-weight="700">S5R-A Low T 世代 (≤ 300 ng/dL)</text>
+          <text x="235" y="300" text-anchor="middle" fill="#1d4ed8" font-size="12.5" font-weight="600">Query 15755247 · n = 5,396 (62 HCOs)</text>
+          <text x="235" y="318" text-anchor="middle" fill="#475569" font-size="11">同日 0–300 ng/dL + 1–365d 再次 0–300 ng/dL</text>
+
+          <!-- Normal T Box -->
+          <rect x="470" y="258" width="350" height="74" rx="10" fill="#f0fdfa" stroke="#0f766e" stroke-width="2"/>
+          <text x="645" y="281" text-anchor="middle" fill="#134e4a" font-size="13.5" font-weight="700">S5R-A Normal T 對照世代 (&gt; 300 ng/dL)</text>
+          <text x="645" y="300" text-anchor="middle" fill="#0f766e" font-size="12.5" font-weight="600">Query 15755366 · n = 80,493 (73 HCOs)</text>
+          <text x="645" y="318" text-anchor="middle" fill="#475569" font-size="11">同日 ≥300（排除同日 0–300）且 1–365d 無 0–300</text>
+
+          <!-- Side Box: Cross-Route Sensitivities -->
+          <rect x="860" y="118" width="280" height="214" rx="10" fill="#f8fafc" stroke="#94a3b8" stroke-width="1.5" stroke-dasharray="6,4"/>
+          <text x="1000" y="142" text-anchor="middle" fill="#334155" font-size="13" font-weight="700">跨世代敏感度對照（既有兩路線）</text>
+          <rect x="876" y="156" width="248" height="74" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+          <text x="1000" y="176" text-anchor="middle" fill="#1e293b" font-size="12" font-weight="700">路線一：P3-2TA (2011–2015)</text>
+          <text x="1000" y="193" text-anchor="middle" fill="#475569" font-size="11">具基線代謝風險 · 8,608 對</text>
+          <text x="1000" y="210" text-anchor="middle" fill="#b91c1c" font-size="11.5" font-weight="700">10y MASLD HR 1.252 (p&lt;0.0001)</text>
+          <text x="1000" y="224" text-anchor="middle" fill="#64748b" font-size="10.5">H25 HR 1.061 · 另含 TRT-NU/T2/T5</text>
+
+          <rect x="876" y="242" width="248" height="76" rx="8" fill="#ffffff" stroke="#cbd5e1"/>
+          <text x="1000" y="262" text-anchor="middle" fill="#1e293b" font-size="12" font-weight="700">路線二：S5-2TA (嚴格代謝健康)</text>
+          <text x="1000" y="279" text-anchor="middle" fill="#475569" font-size="11">排除 21 項診斷+次臨床檢驗+用藥</text>
+          <text x="1000" y="296" text-anchor="middle" fill="#0f766e" font-size="11.5" font-weight="700">10y (1,095對) HR 1.449 (p=0.107)</text>
+          <text x="1000" y="311" text-anchor="middle" fill="#64748b" font-size="10.5">W22 5y (2,282對) HR 1.452 · O3–O8 顯著</text>
+
+          <!-- PSM Box -->
+          <path d="M 290 332 L 290 364 L 440 364 L 440 384" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M 645 332 L 645 364 L 440 364" fill="none" stroke="#475569" stroke-width="2"/>
+
+          <rect x="260" y="386" width="440" height="70" rx="10" fill="#1e293b"/>
+          <text x="480" y="410" text-anchor="middle" fill="#ffffff" font-size="13.5" font-weight="700">1:1 傾向分數配對 (Greedy NN, Caliper 0.1 SD)</text>
+          <text x="480" y="429" text-anchor="middle" fill="#e2e8f0" font-size="11.5">41 項基線共變項（-365 至 0 天）· Index Event 僅勾 Group 1</text>
+          <text x="480" y="446" text-anchor="middle" fill="#86efac" font-size="11.5" font-weight="600">主分析與全數 10 項肝臟／敏感度分析配對後皆 0 項 SMD &gt; 0.1</text>
+
+          <!-- TRT-NU Branch from Low T -->
+          <path d="M 140 332 L 140 478" fill="none" stroke="#6d28d9" stroke-width="2" marker-end="url(#arr)"/>
+          <rect x="20" y="480" width="240" height="148" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.8"/>
+          <text x="140" y="503" text-anchor="middle" fill="#4c1d95" font-size="13" font-weight="700">S5R-A TRT-NU 介入分支</text>
+          <text x="140" y="521" text-anchor="middle" fill="#5b21b6" font-size="11">15757281 (d0-180 TRT, n=876)</text>
+          <text x="140" y="537" text-anchor="middle" fill="#5b21b6" font-size="11">vs 15757397 (d0-365 無TRT, n=4,246)</text>
+          <text x="140" y="556" text-anchor="middle" fill="#475569" font-size="11">45 項共變項（移HS100，補T分層）</text>
+          <text x="140" y="576" text-anchor="middle" fill="#0f172a" font-size="11.5" font-weight="700">10y (830對): MASLD HR 1.191</text>
+          <text x="140" y="593" text-anchor="middle" fill="#0f172a" font-size="11.5" font-weight="700">5y (788對): MASLD HR 1.004</text>
+          <text x="140" y="612" text-anchor="middle" fill="#64748b" font-size="10.5">H25 陰性對照 NS · 未見保護效應</text>
+
+          <!-- Downstream 3 Branches from PSM -->
+          <path d="M 480 456 L 480 480" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M 480 468 L 720 468 L 720 480" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+          <path d="M 720 468 L 995 468 L 995 480" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
+
+          <!-- Branch 1: Primary & Liver -->
+          <rect x="285" y="482" width="275" height="248" rx="10" fill="#ffffff" stroke="#1d4ed8" stroke-width="1.8"/>
+          <text x="422" y="505" text-anchor="middle" fill="#1e3a8a" font-size="13" font-weight="700">主結局與肝臟進展 (10y &amp; 5y)</text>
+          <text x="300" y="528" fill="#0f172a" font-size="11.5" font-weight="700">• O1 MASLD (3,757 / 3,882 對)</text>
+          <text x="310" y="544" fill="#b91c1c" font-size="11.5" font-weight="700">10y HR 1.372 · 5y HR 1.475</text>
+          <text x="300" y="566" fill="#0f172a" font-size="11.5" font-weight="700">• 肝臟進展 (4,881 / 4,896 對)</text>
+          <text x="310" y="582" fill="#b91c1c" font-size="11.5" font-weight="700">10y K76.0 only: HR 1.587</text>
+          <text x="310" y="598" fill="#b91c1c" font-size="11.5" font-weight="700">10y K75.81 MASH: HR 2.124*</text>
+          <text x="310" y="614" fill="#475569" font-size="11.5">10y K74 硬化: HR 0.927 (NS)</text>
+          <text x="300" y="636" fill="#0f172a" font-size="11.5" font-weight="700">• O3–O8 代謝異常 (10y / 5y)</text>
+          <text x="310" y="652" fill="#1d4ed8" font-size="11">Obesity 1.53 · T2DM 1.68</text>
+          <text x="310" y="668" fill="#1d4ed8" font-size="11">Prediab 1.35 · HTN 1.35</text>
+          <text x="300" y="690" fill="#0f766e" font-size="11.5" font-weight="700">• O2 H25 陰性對照：全為 NS</text>
+          <text x="310" y="706" fill="#64748b" font-size="10.5">(10y HR 0.887 / 1.073)</text>
+
+          <!-- Branch 2: 5 Internal Sensitivities -->
+          <rect x="580" y="482" width="275" height="248" rx="10" fill="#ffffff" stroke="#0f766e" stroke-width="1.8"/>
+          <text x="717" y="505" text-anchor="middle" fill="#134e4a" font-size="13" font-weight="700">S5R-A 5 大內部敏感度 (10y &amp; 5y)</text>
+          <text x="595" y="530" fill="#0f172a" font-size="11.5" font-weight="700">1. SA-K760 (純 K76.0)</text>
+          <text x="605" y="546" fill="#b91c1c" font-size="11">10y HR 1.587* · 5y HR 1.234</text>
+          <text x="595" y="568" fill="#0f172a" font-size="11.5" font-weight="700">2. SA-Lag2 (2 年排除窗)</text>
+          <text x="605" y="584" fill="#b91c1c" font-size="11">10y HR 1.550* · 5y HR 1.595*</text>
+          <text x="595" y="606" fill="#0f172a" font-size="11.5" font-weight="700">3. SA-GLP1 (排除 A10BJ)</text>
+          <text x="605" y="622" fill="#b91c1c" font-size="11">10y HR 1.422* · 5y HR 1.288</text>
+          <text x="595" y="644" fill="#0f172a" font-size="11.5" font-weight="700">4. SA-Alcohol (排除追蹤飲酒)</text>
+          <text x="605" y="660" fill="#b91c1c" font-size="11">10y HR 1.625* · 5y HR 1.610*</text>
+          <text x="595" y="682" fill="#0f172a" font-size="11.5" font-weight="700">5. TT400 (Normal T ≥400.1)</text>
+          <text x="605" y="698" fill="#b91c1c" font-size="11">10y HR 1.718* · 5y HR 1.737*</text>
+          <text x="595" y="718" fill="#0f766e" font-size="10.5" font-weight="600">全數 10 項分析 0 SMD&gt;0.1 · H25 全 NS</text>
+
+          <!-- Branch 3: 7 Demographic Subgroups -->
+          <rect x="875" y="482" width="265" height="248" rx="10" fill="#ffffff" stroke="#b45309" stroke-width="1.8"/>
+          <text x="1007" y="505" text-anchor="middle" fill="#92400e" font-size="13" font-weight="700">7 組人口學次分析 (Fig 3B, 10y)</text>
+          <text x="890" y="530" fill="#0f172a" font-size="11.5" font-weight="700">• Age 40–64 (4,496 對)</text>
+          <text x="900" y="546" fill="#b91c1c" font-size="11">MASLD HR 1.585* · H25 1.045</text>
+          <text x="890" y="568" fill="#0f172a" font-size="11.5" font-weight="700">• Age 65–90 (913 對)</text>
+          <text x="900" y="584" fill="#475569" font-size="11">MASLD HR 1.178 (NS) · H25 0.936</text>
+          <text x="890" y="606" fill="#0f172a" font-size="11.5" font-weight="700">• White (4,158 對)</text>
+          <text x="900" y="622" fill="#b91c1c" font-size="11">MASLD HR 1.594* · H25 0.999</text>
+          <text x="890" y="644" fill="#0f172a" font-size="11.5" font-weight="700">• Black (514 對)</text>
+          <text x="900" y="660" fill="#475569" font-size="11">MASLD HR 0.972 (NS) · H25 1.000</text>
+          <text x="890" y="682" fill="#0f172a" font-size="11.5" font-weight="700">• Not Hispanic (3,765 對)</text>
+          <text x="900" y="698" fill="#b91c1c" font-size="11">MASLD HR 1.582* · H25 1.040</text>
+          <text x="890" y="718" fill="#64748b" font-size="10.5">• Asian (106對) / Hispanic (275對): 隱蔽</text>
+        </svg>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TAB 3: SENSITIVITY ================= -->
+  <section id="tab-sensitivity" class="tab-panel">
+    <div class="card">
+      <h2>S5R-A 敏感度分析與跨路線對照 Forest Plot（10 年期 MASLD HR）</h2>
+      <p class="card-desc">紅色點表示 p &lt; 0.05 顯著風險上升，灰色點表示未達統計顯著；虛線為 HR = 1.0。</p>
+      <div class="forest-wrap" id="forest-sensitivity"></div>
+    </div>
+
+    <div class="card">
+      <h2>一、S5R-A 內部 5 大敏感度分析（10 年與 5 年完整數據）</h2>
+      <p class="card-desc">全部 10 項分析皆配對後 <strong>0 項 SMD &gt; 0.1</strong>，且白內障陰性對照（H25）在所有 10 項分析中皆無統計顯著差異（HR 0.916–1.090）。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>敏感度分析</th>
+              <th>時間窗</th>
+              <th>Analysis ID</th>
+              <th class="num">配對數 (對)</th>
+              <th class="num">Max SMD</th>
+              <th>O1 MASLD Events</th>
+              <th>O1 HR (95% CI)</th>
+              <th>Log-rank p</th>
+              <th>PH p</th>
+              <th>O2 H25 HR (p)</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-sa-internal"></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>二、跨世代敏感度對照：先前兩條路線（路線一 P3-2TA 與路線二 S5-2TA）</h2>
+      <p class="card-desc">將原先開發的兩條世代定義定位為「納入／排除標準敏感度測試」，驗證在不同基線代謝負擔光譜下（具代謝風險 → 無確診代謝疾病 → 嚴格排除次臨床檢驗異常），低睪固酮與 MASLD 及代謝異常之關聯方向完全一致。</p>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>世代路線與定位</th>
+              <th>收案期與定義</th>
+              <th>Analysis ID</th>
+              <th class="num">配對數</th>
+              <th>O1 MASLD HR (95% CI)</th>
+              <th>Log-rank p</th>
+              <th>O2 H25 HR (p)</th>
+              <th>備註／平衡度</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><span class="badge badge-primary">主軸</span> <strong>S5R-A 10y</strong></td>
+              <td>2011–2020 無確診代謝疾病 (排除 15 項診斷)</td>
+              <td><span class="code">6b045964bc9814e98f7efc57</span></td>
+              <td class="num">3,757</td>
+              <td class="sig-text">1.372 (1.120–1.681)</td>
+              <td class="sig-text">0.0022</td>
+              <td>0.887 (0.260)</td>
+              <td>0 項 SMD&gt;0.1 (BMI 0.043)</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-neutral">路線一</span> <strong>P3-2TA v2 主分析 (10y)</strong></td>
+              <td>2011–2015 具基線代謝風險（47 項共變項，14 層 BMI）</td>
+              <td><span class="code">6b0003ec0b258a111a25e7c3</span></td>
+              <td class="num">8,608</td>
+              <td class="sig-text">1.252 (1.132–1.383)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+              <td>1.061 (0.192)</td>
+              <td>BMI 連續 SMD 0.1621 (14 層均 &lt;0.054)</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-neutral">路線一</span> P3-2TA SA-K760 / Lag2 / GLP1 / Alcohol / TT400</td>
+              <td>2011–2015 具基線代謝風險之 5 項敏感度 (10y)</td>
+              <td><span class="code">6b014517..</span> 等 5 案</td>
+              <td class="num">9,328–9,901</td>
+              <td class="sig-text">1.236 – 1.365</td>
+              <td class="sig-text">全 &lt; 0.0001</td>
+              <td>1.041–1.062 (全 NS)</td>
+              <td>全部顯著且方向高度一致</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-neutral">路線一</span> P3-2TA TRT-NU / T2 / T5</td>
+              <td>2011–2015 低 T 世代內 TRT 新用 / 2年 / 5年持續</td>
+              <td><span class="code">6b003b52..</span> 等 3 案</td>
+              <td class="num">2,017 / 1,554 / 484</td>
+              <td class="ns-text">0.981 / 1.157 / 1.043</td>
+              <td>0.83 / 0.23 / 0.85</td>
+              <td>0.964 / 1.142 / 1.202 (全 NS)</td>
+              <td>與 S5R-A TRT-NU 結論完全吻合</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-accent">路線二</span> <strong>S5-2TA 嚴格代謝健康 (10y)</strong></td>
+              <td>2011–2015 排除 21 項診斷＋次臨床檢驗＋代謝用藥</td>
+              <td><span class="code">6b002868bc9814e98f749498</span></td>
+              <td class="num">1,095</td>
+              <td>1.449 (0.921–2.281)</td>
+              <td>0.1065</td>
+              <td>1.009 (0.964)</td>
+              <td>樣本較小檢力不足；O3–O8 全部顯著 (T2DM HR 2.365)</td>
+            </tr>
+            <tr>
+              <td><span class="badge badge-accent">路線二</span> <strong>S5-2TA-W22 嚴格代謝健康 (5y)</strong></td>
+              <td>2011–2022 擴大收案期嚴格代謝健康世代</td>
+              <td><span class="code">6b0446a8bc9814e98f7ec0fc</span></td>
+              <td class="num">2,282</td>
+              <td>1.452 (0.909–2.320)</td>
+              <td>0.1168</td>
+              <td>0.660 (0.078)</td>
+              <td>點估計與 S5R-A 5y (1.475) 幾乎一致；O3–O8 全顯著</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TAB 4: SUBGROUPS ================= -->
+  <section id="tab-subgroups" class="tab-panel">
+    <div class="card">
+      <h2>S5R-A 人口學次分析 Forest Plot（Fig 3B 同款，10 年期 365–3650 天）</h2>
+      <p class="card-desc">全數 7 組次分析均為 <strong>complete（無 incomplete HCO 警告）</strong>。中年（40–64 歲）、白人（White）與非西語裔（Not Hispanic）均呈現高度一致的 ~1.58–1.59 倍風險；65–90 歲與非裔（Black）較弱或無顯著；亞裔與西語裔因無代謝疾病母體樣本數較小而依 TriNetX 隱私規範隱蔽。</p>
+      <div class="forest-wrap" id="forest-subgroups"></div>
+    </div>
+
+    <div class="card">
+      <h2>7 組人口學次分析完整統計表</h2>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>次群組</th>
+              <th>Query IDs (Low / Normal)</th>
+              <th>Analysis ID</th>
+              <th class="num">配對數 (對)</th>
+              <th class="num">Max SMD</th>
+              <th>O1 MASLD Events</th>
+              <th>O1 HR (95% CI)</th>
+              <th>Log-rank p</th>
+              <th>PH p</th>
+              <th>O2 H25 HR (p)</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-subgroups"></tbody>
+        </table>
+      </div>
+    </div>
+  </section>
+
+  <!-- ================= TAB 5: WRITING & ENDNOTE ================= -->
+  <section id="tab-writing" class="tab-panel">
+    <div class="card">
+      <h2>建議寫作方向（以 S5R-A 為主軸之論文架構藍圖）</h2>
+      <p class="card-desc">目標期刊建議：<em>Liver International</em>、<em>Clinical Gastroenterology and Hepatology</em>、<em>Hepatology Communications</em> 或 <em>Journal of Clinical Endocrinology &amp; Metabolism</em>。以下逐段整理敘事邏輯與應放的核心數據。</p>
+
+      <div class="grid-2">
+        <div class="step-box">
+          <h3><span class="step-num">1</span>Title &amp; Abstract（核心賣點）</h3>
+          <p><strong>建議主軸</strong>：在<strong>基線無確診代謝疾病</strong>的男性中，持續性低總睪固酮（≤300 ng/dL）獨立預測 5 年與 10 年新發 MASLD、10 年 MASH（風險倍增）及多項新發心臟代謝風險因子；然而於現實世界啟動 TRT 未見保護效應。</p>
+          <p><strong>差異化亮點</strong>：直接破解過去橫斷面與高代謝負擔世代中「究竟是肥胖／糖尿病造成低 T 與脂肪肝，還是低 T 獨立先行於脂肪肝與代謝惡化？」的雙向混淆難題。</p>
+        </div>
+
+        <div class="step-box">
+          <h3><span class="step-num">2</span>Introduction（研究缺口與假說）</h3>
+          <p>• 引介 MASLD 新命名與診斷共識（<strong>Rinella 2023</strong>、<strong>EASL 2024</strong>）。<br/>
+          • 綜述男性低睪固酮與脂肪肝之橫斷面與 Meta-analysis 關聯（<strong>Kim 2012</strong>、<strong>Jaruvongvanich 2017</strong>、<strong>Cho 2026</strong>、<strong>2026 Bidirectional Meta-Analysis</strong>），並點出組織學嚴重度關聯（<strong>Sarkar 2021</strong>）。<br/>
+          • <strong>關鍵缺口</strong>：過去縱向研究結果矛盾（<strong>Seo 2015</strong> 指出低 T 僅預測盛行而非新發 NAFLD），且多數研究未排除基線既有代謝疾病，亦缺乏同時評估「肝臟進展（MASH/肝硬化）＋代謝軌跡＋TRT 介入」的大型十年世代研究。</p>
+        </div>
+
+        <div class="step-box">
+          <h3><span class="step-num">3</span>Methods（方法學嚴謹度亮點）</h3>
+          <p>• 遵循 STROBE 規範（<strong>von Elm 2007</strong>），採用 TriNetX US Collaborative Network 並比照既有頂刊 TriNetX 設計（<strong>Stokar 2026</strong>、<strong>Chang 2024</strong>、<strong>Henney 2026</strong>）。<br/>
+          • <strong>S5R-A 設計</strong>：排除基線 15 項確診代謝疾病、確認 1–365 天持續性低 T 與無 1 年死亡、統一 Index Event 為 Group 1、1 年 lag（365–3650d）避免反向因果、41 項共變項 1:1 PSM 達 0 項 SMD &gt; 0.1。<br/>
+          • <strong>ICD-10 編碼合理性</strong>：引用專家 Delphi 共識支持 `K76.0`/`K75.81` 操作型定義（<strong>Hagström 2024</strong>），並納入白內障 `H25` 作為陰性對照、5 大內部敏感度與兩條跨定義世代（P3-2TA、S5-2TA）。</p>
+        </div>
+
+        <div class="step-box">
+          <h3><span class="step-num">4</span>Results &amp; Discussion（三大核心論點）</h3>
+          <p><strong>論點 A（肝臟階段特異性）</strong>：低 T 顯著提升 10 年 MASLD（HR 1.372）、單純脂肪肝（HR 1.587）與 <strong>MASH（HR 2.124, p=0.0166）</strong>，但未提升 10 年肝硬化（K74, HR 0.927）——符合在「基線無確診代謝疾病」的相對早期世代中，10 年足以觀察到脂肪變性與發炎（MASH），而進展至肝硬化常需更長自然病史（對照 <strong>Sarkar 2021</strong>）。<br/>
+          <strong>論點 B（代謝惡化先行與中介角色）</strong>：低 T 同步推升 Obesity、T2DM、Prediabetes、HTN（HR 1.35–1.68），顯示低 T 可能透過內臟脂肪堆積與胰島素阻抗驅動 MASLD（與 <strong>Seo 2015</strong> 差異可能源於樣本數、確認性低 T 定義與 10 年追蹤期）；且次分析顯示效應集中於 40–64 歲中年男性與白人／非西語裔。<br/>
+          <strong>論點 C（TRT 中性結果的審慎判讀）</strong>：無論在 S5R-A（10y HR 1.191, 5y HR 1.004）或路線一（NU/T2/T5 HR 0.98–1.16），現實世界 TRT 均未降低 MASLD 風險（對照女性 HRT 研究 <strong>Henney 2026</strong>），可能反映指徵混淆、治療遵從度／劑量異質性，或外源性補充無法單獨逆轉已啟動的代謝軌跡；需透過隨機試驗驗證，切勿過度宣稱因果無效。</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="card">
+      <h2>EndNote 文獻庫整合與建議引用落點（共 14 篇：<span class="code">TT-MASLD.enl</span> / <span class="code">TriNetX_MASLD_EndNote_13refs.ris</span> + 資料夾 PDF）</h2>
+      <div class="filter-bar" id="ref-filters">
+        <button class="filter-pill active" data-sec="ALL">全部文獻 (14)</button>
+        <button class="filter-pill" data-sec="Introduction">Introduction</button>
+        <button class="filter-pill" data-sec="Methods">Methods</button>
+        <button class="filter-pill" data-sec="Discussion">Discussion</button>
+        <button class="filter-pill" data-sec="Limitations">Limitations</button>
+      </div>
+      <div id="ref-list"></div>
+    </div>
+  </section>
+
+  <!-- ================= TAB 6: TRINETX AUDIT ================= -->
+  <section id="tab-audit" class="tab-panel">
+    <div class="card">
+      <h2>TriNetX 實作步驟與分析師審核清單（Study 410562 · US Collaborative Network）</h2>
+      <div class="callout warn">
+        <strong>不可變原則與操作紀錄：</strong>所有新建 Query 皆採 <code>New Query → Import Query → 立即改名</code>，所有新建 Analysis 皆採 <code>Duplicate → 立即改名</code>，<strong>絕未修改或刪除任何既有 Query 或 Analysis</strong>；每次僅執行單一 Count/Run，並於每次 Paste Logic 後立即回讀驗證欄位與時間關係原文。
+      </div>
+
+      <h3>1. 核心 Query ID 與 Group 1–9 邏輯對照表</h3>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>角色</th>
+              <th>Query ID</th>
+              <th>Query 名稱</th>
+              <th class="num">人數</th>
+              <th class="num">HCOs</th>
+              <th>關鍵條件與新增 Group 邏輯（原文驗證）</th>
+            </tr>
+          </thead>
+          <tbody id="tbody-queries"></tbody>
+        </table>
+      </div>
+
+      <h3>2. PSM 共變項與平台設定稽核（Balance Cohorts: -365 至 0 天）</h3>
+      <div class="grid-2">
+        <div class="step-box">
+          <strong>Low T vs Normal T（主分析、肝臟結局、5 大敏感度、7 組次分析）：41 項共變項</strong>
+          <ul style="margin:6px 0 0; padding-left:18px; font-size:12.8px; color:#334155;">
+            <li><strong>人口學 (5)</strong>：Age at Index (連續)、White、Black、Hispanic、Asian</li>
+            <li><strong>診斷 (11)</strong>：E78, I10-I1A, E11, G47, E65-E68, F30-F39, I20-I25, E00-E07, N17-N19, F17, F11, F10</li>
+            <li><strong>用藥 (10)</strong>：CV350, HS500, HS050, CV800, CV700, CV100, CV200, CV805, HS850, HS100</li>
+            <li><strong>就醫利用 (3)</strong>：AMB (門診), IMP (住院), EMER (急診)（二元 Present/Absent）</li>
+            <li><strong>檢驗 (11，分類分層)</strong>：BMI (9083, 8層)、HDL (9001)、TG (9004)、HbA1c (9037)、SBP (9085)、DBP (9086)、LDL (9002)、ALT (9044)、AST (9047)、Platelets (9020)、TSH (9040)</li>
+          </ul>
+        </div>
+        <div class="step-box">
+          <strong>S5R-A TRT-NU（介入分析）：45 項共變項</strong>
+          <ul style="margin:6px 0 0; padding-left:18px; font-size:12.8px; color:#334155;">
+            <li>沿用上述 41 項共變項，<strong>移除 <code>VA HS100</code>（Androgens/anabolics）</strong> 避免過度配對暴露本身。</li>
+            <li>比照路線一 <code>TRT-NU</code> 補入 4 項臨床指徵診斷（Present/Absent）：<strong><code>E29.1</code>（性腺功能低下）、<code>N52</code>（勃起功能障礙）、<code>F32</code>、<code>F33</code>（憂鬱症）</strong>。</li>
+            <li>補入 <strong><code>LG11398-1</code> 基線總睪固酮三分層</strong>：<code>0–200</code>、<code>200–250</code>、<code>250–300 ng/dL</code>（配對後連續 T SMD 0.0574 [10y] / 0.0153 [5y]，三分層 SMD 全 &lt; 0.032）。</li>
+            <li><strong>Outcomes 稽核</strong>：Index Event 兩組皆僅勾 <code>Group 1</code>（<code>1 Term Selected × 2</code>）；MoA 與 KM 兩個 <code>Exclude prior outcome</code> 皆勾選；<code>Compare after matching</code> 皆勾選。</li>
+          </ul>
+        </div>
+      </div>
+
+      <h3>3. 已知平台限制與分析師審核注意事項（透明揭露）</h3>
+      <div class="step-box">
+        <ol style="margin:0; padding-left:20px; font-size:13px; color:#334155;">
+          <li><strong>Incomplete HCO 警告</strong>：S5R-A 主分析、肝臟結局、5 大敏感度與 TRT-NU 執行時曾出現 <code>Results are incomplete; one or more HCOs failed to return results.</code>（網路即時回應節點波動，故不同執行時間點之配對人數由 3,757 至 5,405 略有差異）；7 組人口學次分析均為完整回應（<code>incomplete = false</code>）。</li>
+          <li><strong>小樣本隱蔽規則（TriNetX Privacy Floor）</strong>：人數 ≤10 顯示為 10，或如 5 年期 `K75.81`、Asian（106 對）、Hispanic（275 對）因事件數過少由平台自動隱蔽結果，均如實標記未推估。</li>
+          <li><strong>比例風險假設（PH Test）</strong>：S5R-A 主分析 10 年 MASLD（PH p=0.0805）與所有 5 大敏感度 10 年 MASLD（PH p=0.63–0.90）皆滿足比例風險假設；部分代謝結局（O4/O5/O6/O7/O8）於 10 年窗出現 PH p&lt;0.05，已同時報告 5 年分段窗口與 RD/RR 輔助判讀。</li>
+          <li><strong>90 歲年齡隱私限制</strong>：TriNetX 年齡篩選依平台隱私規則排除目前 &gt;90 歲患者，論文 Methods 應如實記載。</li>
+          <li><strong>就醫頻次調整限制</strong>：TriNetX PSM 不支援連續型就醫次數（visit count），已透過二元 <code>AMB/IMP/EMER</code> 標記與白內障陰性對照（<code>H25</code>，全系列皆為 NS）雙重把關監測偏誤。</li>
+          <li><strong>TRT-NU 殘餘不平衡註記</strong>：10 年版 <code>HbA1c</code> 連續 SMD 0.1026、5 年版 <code>TG</code> 連續 SMD 0.1015，其餘所有納入 PSM 共變項均 &lt; 0.1；刻意排除的 <code>HS100</code>（10 vs 0）屬預期現象。</li>
+        </ol>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer>
+  TriNetX Study 410562 (testosterone and MAFLD) · S5R-A Primary Axis Analyst Audit Report · Generated 2026-11-24 · All figures verified directly from TriNetX live outputs &amp; local JSON archives.
+</footer>
+
+<script>
+  // Tab switching
+  document.querySelectorAll('.tab-btn').forEach(btn => {
+    btn.addEventListener('click', () => {
+      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
+      btn.classList.add('active');
+      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
+    });
+  });
+
+  // Data: Internal Sensitivity Analyses (10y & 5y)
+  const saInternal = [
+    { name: 'SA-K760 (純 K76.0)', win: '10y (365–3650)', id: '6b0521f5bc9814e98f8205c0', n: '4,881', smd: '0.0661', ev: '267/4,858 vs 164/4,874', hr: 1.587, lo: 1.307, hi: 1.928, p: '< 0.0001', ph: '0.6434', h25: '1.073 (0.456)', sig: true },
+    { name: 'SA-K760 (純 K76.0)', win: '5y (365–1825)', id: '6b052559009e92e9b786972e', n: '4,896', smd: '0.0753', ev: '107/4,873 vs 84/4,880', hr: 1.234, lo: 0.927, hi: 1.642, p: '0.1484', ph: '0.0731', h25: '0.927 (0.562)', sig: false },
+    { name: 'SA-Lag2 (2 年排除窗)', win: '10y (730–3650)', id: '6b052b190b258a111a33ce78', n: '5,122', smd: '0.0944', ev: '272/5,074 vs 170/5,089', hr: 1.550, lo: 1.280, hi: 1.878, p: '< 0.0001', ph: '0.8975', h25: '1.013 (0.898)', sig: true },
+    { name: 'SA-Lag2 (2 年排除窗)', win: '5y (730–1825)', id: '6b053032bc9814e98f823768', n: '5,271', smd: '0.0617', ev: '104/5,220 vs 64/5,236', hr: 1.595, lo: 1.168, hi: 2.178, p: '0.0030', ph: '0.2587', h25: '1.090 (0.573)', sig: true },
+    { name: 'SA-GLP1 (排除 A10BJ)', win: '10y (365–3650)', id: '6b0538300b258a111a33f4a9', n: '5,402', smd: '0.0754', ev: '319/5,370 vs 215/5,392', hr: 1.422, lo: 1.196, hi: 1.690, p: '< 0.0001', ph: '0.7760', h25: '1.039 (0.669)', sig: true },
+    { name: 'SA-GLP1 (排除 A10BJ)', win: '5y (365–1825)', id: '6b053a77009e92e9b786de54', n: '5,402', smd: '0.0754', ev: '133/5,370 vs 101/5,392', hr: 1.288, lo: 0.994, hi: 1.668, p: '0.0548*', ph: '0.0458', h25: '0.991 (0.945)', sig: false },
+    { name: 'SA-Alcohol (排除追蹤飲酒)', win: '10y (365–3650)', id: '6b053cca009e92e9b786e3b6', n: '5,157', smd: '0.0805', ev: '269/5,128 vs 159/5,142', hr: 1.625, lo: 1.336, hi: 1.978, p: '< 0.0001', ph: '0.7488', h25: '1.032 (0.736)', sig: true },
+    { name: 'SA-Alcohol (排除追蹤飲酒)', win: '5y (365–1825)', id: '6b053f45009e92e9b786eec7', n: '5,157', smd: '0.0805', ev: '116/5,128 vs 70/5,142', hr: 1.610, lo: 1.197, hi: 2.166, p: '0.0015', ph: '0.4328', h25: '1.056 (0.682)', sig: true },
+    { name: 'TT400 (Normal T ≥400.1)', win: '10y (365–3650)', id: '6b054154bc9814e98f8267b7', n: '5,405', smd: '0.0869', ev: '318/5,373 vs 179/5,391', hr: 1.718, lo: 1.431, hi: 2.063, p: '< 0.0001', ph: '0.6343', h25: '1.004 (0.965)', sig: true },
+    { name: 'TT400 (Normal T ≥400.1)', win: '5y (365–1825)', id: '6b05447e0b258a111a341c4c', n: '5,104', smd: '0.0865', ev: '118/5,075 vs 67/5,093', hr: 1.737, lo: 1.287, hi: 2.344, p: '0.0003', ph: '0.1648', h25: '0.916 (0.493)', sig: true }
+  ];
+
+  document.getElementById('tbody-sa-internal').innerHTML = saInternal.map(r => `
+    <tr>
+      <td><strong>${r.name}</strong></td>
+      <td>${r.win}</td>
+      <td><span class="code">${r.id}</span></td>
+      <td class="num">${r.n}</td>
+      <td class="num">${r.smd}</td>
+      <td>${r.ev}</td>
+      <td class="${r.sig ? 'sig-text' : ''}">${r.hr.toFixed(3)} (${r.lo.toFixed(3)}–${r.hi.toFixed(3)})</td>
+      <td class="${r.sig ? 'sig-text' : ''}">${r.p}</td>
+      <td>${r.ph}</td>
+      <td>${r.h25}</td>
+    </tr>
+  `).join('');
+
+  // Data: Subgroups
+  const subgroups = [
+    { name: 'Age 40–64', q: '15771046 / 15771051', id: '6b056ce80b258a111a348009', n: '4,496', smd: '0.0849 (0 >0.1)', ev: '287/4,466 vs 175/4,474', hr: 1.585, lo: 1.313, hi: 1.913, p: '< 0.0001', ph: '0.6536', h25: '1.045 (0.680)', sig: true },
+    { name: 'Age 65–90', q: '15771077 / 15771080', id: '6b056f29009e92e9b78768f5', n: '913', smd: '0.2220 (連續; 分層≤0.070)', ev: '32/911 vs 26/911', hr: 1.178, lo: 0.702, hi: 1.976, p: '0.5353', ph: '0.0916', h25: '0.936 (0.681)', sig: false },
+    { name: 'White', q: '15772149 / 15772177', id: '6b05715a009e92e9b7876b91', n: '4,158', smd: '0.0732 (0 >0.1)', ev: '266/4,132 vs 163/4,139', hr: 1.594, lo: 1.311, hi: 1.937, p: '< 0.0001', ph: '0.1562', h25: '0.999 (0.989)', sig: true },
+    { name: 'Black / African American', q: '15772204 / 15772238', id: '6b0573b3009e92e9b7876ed3', n: '514', smd: '0.1992 (≤10混淆)', ev: '18/512 vs 18/513', hr: 0.972, lo: 0.505, hi: 1.867, p: '0.9310', ph: '0.3509', h25: '1.000 (1.000)', sig: false },
+    { name: 'Asian', q: '15772261 / 15772279', id: '6b0575fe0b258a111a348f11', n: '106', smd: '0.4564 (小樣本)', ev: '隱蔽（事件數過少）', hr: null, lo: null, hi: null, p: '-', ph: '-', h25: '隱蔽', sig: false },
+    { name: 'Hispanic or Latino', q: '15772307 / 15772328', id: '6b057863009e92e9b7877677', n: '275', smd: '0.2747 (小樣本)', ev: '隱蔽（事件數過少）', hr: null, lo: null, hi: null, p: '-', ph: '-', h25: '隱蔽', sig: false },
+    { name: 'Not Hispanic or Latino', q: '15772359 / 15772365', id: '6b057a3a009e92e9b7877960', n: '3,765', smd: '0.1008 (僅TG連續)', ev: '245/3,742 vs 151/3,752', hr: 1.582, lo: 1.291, hi: 1.937, p: '< 0.0001', ph: '0.7865', h25: '1.040 (0.712)', sig: true }
+  ];
+
+  document.getElementById('tbody-subgroups').innerHTML = subgroups.map(r => `
+    <tr>
+      <td><strong>${r.name}</strong></td>
+      <td><span class="code">${r.q}</span></td>
+      <td><span class="code">${r.id}</span></td>
+      <td class="num">${r.n}</td>
+      <td>${r.smd}</td>
+      <td>${r.ev}</td>
+      <td class="${r.sig ? 'sig-text' : 'ns-text'}">${r.hr ? `${r.hr.toFixed(3)} (${r.lo.toFixed(3)}–${r.hi.toFixed(3)})` : 'Suppressed (<10)'}</td>
+      <td class="${r.sig ? 'sig-text' : ''}">${r.p}</td>
+      <td>${r.ph}</td>
+      <td>${r.h25}</td>
+    </tr>
+  `).join('');
+
+  // Generic SVG Forest Plot renderer (log scale)
+  function renderForest(containerId, rows, minX = 0.4, maxX = 4.5) {
+    const rowH = 32, topPad = 32, botPad = 36, leftW = 300, plotW = 420, rightW = 240;
+    const totalW = leftW + plotW + rightW;
+    const totalH = topPad + rows.length * rowH + botPad;
+    const logMin = Math.log(minX), logMax = Math.log(maxX);
+    const xPos = v => leftW + ((Math.log(Math.max(minX, Math.min(maxX, v))) - logMin) / (logMax - logMin)) * plotW;
+    const ticks = [0.5, 0.75, 1.0, 1.5, 2.0, 3.0, 4.0].filter(t => t >= minX && t <= maxX);
+
+    let svg = `<svg viewBox="0 0 ${totalW} ${totalH}" width="${totalW}" height="${totalH}" xmlns="http://www.w3.org/2000/svg" style="max-width:100%;height:auto;font-family:-apple-system,BlinkMacSystemFont,'Noto Sans TC',sans-serif;">`;
+    // Header
+    svg += `<text x="8" y="20" font-size="12" font-weight="700" fill="#334155">分析項目 / 次群組</text>`;
+    svg += `<text x="${leftW + plotW/2}" y="20" text-anchor="middle" font-size="12" font-weight="700" fill="#334155">Hazard Ratio (95% CI, Log Scale)</text>`;
+    svg += `<text x="${leftW + plotW + 14}" y="20" font-size="12" font-weight="700" fill="#334155">HR (95% CI) · p</text>`;
+    svg += `<line x1="0" y1="${topPad - 4}" x2="${totalW}" y2="${topPad - 4}" stroke="#cbd5e1" stroke-width="1"/>`;
+    // Null vertical line
+    const x1 = xPos(1.0);
+    svg += `<line x1="${x1}" y1="${topPad}" x2="${x1}" y2="${totalH - botPad}" stroke="#64748b" stroke-width="1.5" stroke-dasharray="4,4"/>`;
+
+    rows.forEach((r, i) => {
+      const y = topPad + i * rowH + rowH / 2;
+      if (i % 2 === 1) svg += `<rect x="0" y="${topPad + i * rowH}" width="${totalW}" height="${rowH}" fill="#f8fafc"/>`;
+      svg += `<text x="8" y="${y + 4}" font-size="12" font-weight="${r.bold ? '700' : '500'}" fill="#0f172a">${r.label}</text>`;
+      if (r.hr !== null) {
+        const col = r.sig ? '#b91c1c' : '#475569';
+        svg += `<line x1="${xPos(r.lo)}" y1="${y}" x2="${xPos(r.hi)}" y2="${y}" stroke="${col}" stroke-width="2.2"/>`;
+        svg += `<line x1="${xPos(r.lo)}" y1="${y - 4}" x2="${xPos(r.lo)}" y2="${y + 4}" stroke="${col}" stroke-width="1.6"/>`;
+        svg += `<line x1="${xPos(r.hi)}" y1="${y - 4}" x2="${xPos(r.hi)}" y2="${y + 4}" stroke="${col}" stroke-width="1.6"/>`;
+        svg += `<circle cx="${xPos(r.hr)}" cy="${y}" r="${r.bold ? 5.2 : 4.2}" fill="${col}"/>`;
+        svg += `<text x="${leftW + plotW + 14}" y="${y + 4}" font-size="11.8" font-weight="${r.sig ? '700' : '400'}" fill="${col}">${r.hr.toFixed(3)} (${r.lo.toFixed(3)}–${r.hi.toFixed(3)}) · ${r.p}</text>`;
+      } else {
+        svg += `<text x="${leftW + plotW/2}" y="${y + 4}" text-anchor="middle" font-size="11.5" fill="#94a3b8">Suppressed (count too small)</text>`;
+        svg += `<text x="${leftW + plotW + 14}" y="${y + 4}" font-size="11.5" fill="#94a3b8">小樣本隱蔽</text>`;
+      }
+    });
+
+    // Axis
+    const ay = totalH - botPad;
+    svg += `<line x1="${leftW}" y1="${ay}" x2="${leftW + plotW}" y2="${ay}" stroke="#334155" stroke-width="1.2"/>`;
+    ticks.forEach(t => {
+      const tx = xPos(t);
+      svg += `<line x1="${tx}" y1="${ay}" x2="${tx}" y2="${ay + 5}" stroke="#334155"/>`;
+      svg += `<text x="${tx}" y="${ay + 18}" text-anchor="middle" font-size="11" fill="#475569">${t}</text>`;
+    });
+    svg += `</svg>`;
+    document.getElementById(containerId).innerHTML = svg;
+  }
+
+  renderForest('forest-sensitivity', [
+    { label: 'S5R-A 主分析 10y (n=3,757對)', hr: 1.372, lo: 1.120, hi: 1.681, p: 'p=0.0022', sig: true, bold: true },
+    { label: 'S5R-A 主分析 5y (n=3,882對)', hr: 1.475, lo: 1.064, hi: 2.045, p: 'p=0.0190', sig: true },
+    { label: 'S5R-A 10y MASH K75.81 (n=4,881對)', hr: 2.124, lo: 1.130, hi: 3.993, p: 'p=0.0166', sig: true, bold: true },
+    { label: 'S5R-A 10y K74 硬化 (n=4,881對)', hr: 0.927, lo: 0.644, hi: 1.334, p: 'p=0.6841', sig: false },
+    { label: 'S5R-A SA-K760 10y (n=4,881對)', hr: 1.587, lo: 1.307, hi: 1.928, p: 'p<0.0001', sig: true },
+    { label: 'S5R-A SA-Lag2 10y (n=5,122對)', hr: 1.550, lo: 1.280, hi: 1.878, p: 'p<0.0001', sig: true },
+    { label: 'S5R-A SA-GLP1 10y (n=5,402對)', hr: 1.422, lo: 1.196, hi: 1.690, p: 'p<0.0001', sig: true },
+    { label: 'S5R-A SA-Alcohol 10y (n=5,157對)', hr: 1.625, lo: 1.336, hi: 1.978, p: 'p<0.0001', sig: true },
+    { label: 'S5R-A TT400 10y (n=5,405對)', hr: 1.718, lo: 1.431, hi: 2.063, p: 'p<0.0001', sig: true },
+    { label: 'S5R-A TRT-NU 10y (n=830對)', hr: 1.191, lo: 0.785, hi: 1.809, p: 'p=0.4105', sig: false },
+    { label: '【路線一】P3-2TA v2 10y (n=8,608對)', hr: 1.252, lo: 1.132, hi: 1.383, p: 'p<0.0001', sig: true },
+    { label: '【路線二】S5-2TA 嚴格健康 10y (n=1,095對)', hr: 1.449, lo: 0.921, hi: 2.281, p: 'p=0.1065', sig: false },
+    { label: '【路線二】S5-2TA-W22 5y (n=2,282對)', hr: 1.452, lo: 0.909, hi: 2.320, p: 'p=0.1168', sig: false }
+  ], 0.5, 4.2);
+
+  renderForest('forest-subgroups', [
+    { label: 'S5R-A 整體主分析 10y (n=3,757對)', hr: 1.372, lo: 1.120, hi: 1.681, p: 'p=0.0022', sig: true, bold: true },
+    { label: 'Age 40–64 (n=4,496對)', hr: 1.585, lo: 1.313, hi: 1.913, p: 'p<0.0001', sig: true },
+    { label: 'Age 65–90 (n=913對)', hr: 1.178, lo: 0.702, hi: 1.976, p: 'p=0.5353', sig: false },
+    { label: 'White (n=4,158對)', hr: 1.594, lo: 1.311, hi: 1.937, p: 'p<0.0001', sig: true },
+    { label: 'Black / African American (n=514對)', hr: 0.972, lo: 0.505, hi: 1.867, p: 'p=0.9310', sig: false },
+    { label: 'Asian (n=106對)', hr: null, lo: null, hi: null, p: '-', sig: false },
+    { label: 'Hispanic or Latino (n=275對)', hr: null, lo: null, hi: null, p: '-', sig: false },
+    { label: 'Not Hispanic or Latino (n=3,765對)', hr: 1.582, lo: 1.291, hi: 1.937, p: 'p<0.0001', sig: true }
+  ], 0.45, 2.5);
+
+  // EndNote References (13 from RIS + 1 PDF in References folder)
+  const refs = [
+    { id: 1, au: 'Rinella ME et al.', yr: 2023, ti: 'A multisociety Delphi consensus statement on new fatty liver disease nomenclature', jo: 'Journal of Hepatology 2023;79:1542-1556', doi: '10.1016/j.jhep.2023.06.003', pmid: '37364790', secs: ['Introduction', 'Methods'], usage: '【Introduction 第1段 & Methods】界定由 NAFLD 轉型至 MASLD 的國際共識命名與心臟代謝風險因子標準。' },
+    { id: 2, au: 'EASL-EASD-EASO', yr: 2024, ti: 'EASL-EASD-EASO Clinical Practice Guidelines on the management of metabolic dysfunction-associated steatotic liver disease (MASLD)', jo: 'Journal of Hepatology 2024;81:492-542', doi: '10.1016/j.jhep.2024.04.031', pmid: '38851997', secs: ['Introduction', 'Methods', 'Limitations'], usage: '【Introduction / Methods / Limitations】支撐現行 MASLD 臨床篩檢指引、代謝共病定義與 EHR 缺乏影像／組織學之研究限制。' },
+    { id: 3, au: 'Kim S et al.', yr: 2012, ti: 'A low level of serum total testosterone is independently associated with nonalcoholic fatty liver disease', jo: 'BMC Gastroenterology 2012;12:69', doi: '10.1186/1471-230X-12-69', pmid: '22691278', secs: ['Introduction', 'Discussion'], usage: '【Introduction 第2段】引用作為早期經典橫斷面證據，說明低總睪固酮與脂肪肝之獨立關聯。' },
+    { id: 4, au: 'Jaruvongvanich V et al.', yr: 2017, ti: 'Testosterone, Sex Hormone-Binding Globulin and Nonalcoholic Fatty Liver Disease: a Systematic Review and Meta-Analysis', jo: 'Annals of Hepatology 2017;16:382-394', doi: '10.5604/16652681.1235481', pmid: '28425408', secs: ['Introduction', 'Discussion'], usage: '【Introduction & Discussion】綜述男性低睪固酮與女性高雄激素在脂肪肝之性別二態性，強調過去證據多為橫斷面。' },
+    { id: 5, au: 'Bidirectional Meta-Analysis (PDF in EndNote folder)', yr: 2026, ti: 'The Bidirectional Association Between MASLD and Male Hypogonadism: An Updated Meta-Analysis', jo: '2026 (EndNote References folder PDF)', doi: '見本地 PDF', pmid: '-', secs: ['Introduction', 'Discussion'], usage: '【Introduction & Discussion 核心對照】2026 最新雙向 Meta-analysis；藉此凸顯「雙向關聯」難題，並強調本研究以 S5R-A（基線無確診代謝疾病）＋1 年／2 年 lag 釐清時間先後順序的獨特貢獻。' },
+    { id: 6, au: 'Seo NK et al.', yr: 2015, ti: 'Prediction of prevalent but not incident non-alcoholic fatty liver disease by levels of serum testosterone', jo: 'Journal of Gastroenterology and Hepatology 2015;30:1211-1216', doi: '10.1111/jgh.12935', pmid: '25708291', secs: ['Introduction', 'Discussion'], usage: '【Introduction 缺口 & Discussion 第2段必引】關鍵反面縱向研究（認為低 T 僅預測盛行而非新發 NAFLD）；直接討論本研究為何觀察到顯著新發風險（大樣本、兩次確認性低 T、10 年追蹤、S5R-A 無既有代謝疾病設計）。' },
+    { id: 7, au: 'Sarkar M et al.', yr: 2021, ti: 'Low Testosterone Is Associated With Nonalcoholic Steatohepatitis and Fibrosis Severity in Men', jo: 'Clinical Gastroenterology and Hepatology 2021;19:400-402.e2', doi: '10.1016/j.cgh.2019.11.053', pmid: '31812658', secs: ['Introduction', 'Discussion'], usage: '【Discussion 肝臟進展段必引】直接呼應本研究 10 年 MASH（K75.81）HR 2.124 的重大發現，並對照討論為何 K74 肝硬化於無代謝疾病基線之 10 年窗尚未分化。' },
+    { id: 8, au: 'Cho HJ et al.', yr: 2026, ti: 'Metabolic Dysfunction-Associated Steatotic Liver Disease and Vascular Complications: Associations with Serum Testosterone Levels in a Korean Multicenter Male Cohort', jo: 'Gut and Liver 2026;20:870-879', doi: '10.5009/gnl250585', pmid: '42670694', secs: ['Introduction', 'Discussion'], usage: '【Introduction & Discussion】最新亞洲多中心影像確診 MASLD 與睪固酮研究；對照本研究美國多中心 10 年縱向世代及亞裔樣本數限制。' },
+    { id: 9, au: 'Hagström H et al.', yr: 2024, ti: 'The future of International Classification of Diseases coding in steatotic liver disease: An expert panel Delphi consensus statement', jo: 'Hepatology Communications 2024;8:e0386', doi: '10.1097/HC9.0000000000000386', pmid: '38315102', secs: ['Methods', 'Limitations'], usage: '【Methods Outcome 定義 & Limitations】支持於 EHR 資料庫使用 ICD-10 K76.0/K75.81 定義 MASLD 相關診斷，同時誠實揭露代碼無法取代影像／切片確診。' },
+    { id: 10, au: 'Stokar J et al.', yr: 2026, ti: 'Earlier Menopause and Risk of Metabolic Dysfunction-Associated Steatotic Liver Disease: A Global Cohort Study', jo: 'Diabetes/Metabolism Research and Reviews 2026;42:e70121', doi: '10.1002/dmrr.70121', pmid: '41518227', secs: ['Methods', 'Discussion'], usage: '【Methods 設計先例】提供 TriNetX 1:1 PSM、K76.0 結局與 Fig 3A/3B 次分析架構之方法學先例。' },
+    { id: 11, au: 'Chang HC et al.', yr: 2024, ti: 'Differences in major adverse cardiovascular events of metabolic dysfunction-associated steatotic liver disease by race and ethnicity', jo: 'Clinical and Molecular Hepatology 2024;30:978-981', doi: '10.3350/cmh.2024.0565', pmid: '-', secs: ['Methods', 'Discussion'], usage: '【Methods & Discussion 種族次分析】支持 TriNetX 長期追蹤與種族／族裔分層分析（對應本研究 White HR 1.594 vs Black HR 0.972 差異討論）。' },
+    { id: 12, au: 'Henney AE et al.', yr: 2026, ti: 'Effect of Hormone Replacement Therapy on Liver and Cardiometabolic Outcomes in Peri-Menopausal MASLD', jo: 'Liver International 2026;46:e70562', doi: '10.1111/liv.70562', pmid: '41731345', secs: ['Methods', 'Discussion'], usage: '【Discussion TRT-NU 段落必引】同目標期刊（Liver Int）之 TriNetX 荷爾蒙補充治療分析先例；對照女性 HRT 與本研究男性 TRT-NU 未見保護效應之異同。' },
+    { id: 13, au: 'Wang X et al.', yr: 2026, ti: 'Serum free and bioavailable rather than total testosterone is associated with the progression of non-alcoholic fatty liver disease in postmenopausal women', jo: 'Frontiers in Endocrinology 2026;17:1741229', doi: '10.3389/fendo.2026.1741229', pmid: '-', secs: ['Limitations', 'Discussion'], usage: '【Limitations 必引】提醒總睪固酮受 SHBG 影響，缺乏游離／生物可利用睪固酮（free/bioavailable T）為 EHR 資料庫限制（註：該文為停經後女性，僅作機轉與檢驗分型脈絡引用）。' },
+    { id: 14, au: 'von Elm E et al.', yr: 2007, ti: 'The Strengthening the Reporting of Observational Studies in Epidemiology (STROBE) statement', jo: 'The Lancet 2007;370:1453-1457', doi: '10.1016/S0140-6736(07)61602-X', pmid: '18064739', secs: ['Methods'], usage: '【Methods 首段】聲明本研究報告遵循 STROBE 觀察性研究報告準則。' }
+  ];
+
+  function renderRefs(filterSec) {
+    const list = filterSec === 'ALL' ? refs : refs.filter(r => r.secs.includes(filterSec));
+    document.getElementById('ref-list').innerHTML = list.map(r => `
+      <div class="ref-card">
+        <div class="ref-head">
+          <div class="ref-title">[${r.id}] ${r.au} (${r.yr}). ${r.ti}</div>
+          <div>${r.secs.map(s => `<span class="badge badge-primary" style="margin-left:4px;">${s}</span>`).join('')}</div>
+        </div>
+        <div class="ref-meta">${r.jo} · DOI: <span class="code">${r.doi}</span>${r.pmid !== '-' ? ` · PMID: <span class="code">${r.pmid}</span>` : ''}</div>
+        <div class="ref-usage">${r.usage}</div>
+      </div>
+    `).join('');
+  }
+  renderRefs('ALL');
+
+  document.querySelectorAll('#ref-filters .filter-pill').forEach(p => {
+    p.addEventListener('click', () => {
+      document.querySelectorAll('#ref-filters .filter-pill').forEach(x => x.classList.remove('active'));
+      p.classList.add('active');
+      renderRefs(p.dataset.sec);
+    });
+  });
+
+  // Audit Queries Table
+  const queries = [
+    ['主軸母體 Low T', '15755247', 'S5R-A Low T 2011-2020 (no dx metabolic disease)', '5,396', '62', 'Groups 1–8：2011–2020 首次 LG11398-1 (40–90y)，同日 0–300 + 1–365d 再次 0–300，排除 15 項確診代謝疾病、28 項肝病/癌症/酒精、既往 TRT 與 -1825..-1d 低 T'],
+    ['主軸母體 Normal T', '15755366', 'S5R-A Normal T 2011-2020 (no dx metabolic disease)', '80,493', '73', '同上結構；同日 ≥300 且排除同日 0–300、1–365d 排除 0–300'],
+    ['TRT-NU 暴露組', '15757281', 'S5R-A TRT-NU start d0-180', '876', '55/77', '由 15755247 複製；新增 Group 9：9B MUST HAVE 6 TRT 碼 (RxNorm 10379, J1071, J3121, J3145, S0189, 11980)，於 9A 後 0–180d (6m) 內'],
+    ['TRT-NU 對照組', '15757397', 'S5R-A TRT-NU Ctrl no TRT d0-365', '4,246', '62/77', '由 15755247 複製；新增 Group 9：9B CANNOT HAVE 6 TRT 碼，於 9A 後 0–365d 內'],
+    ['SA-GLP1 Low T', '15769132', 'S5R-A SA-GLP1 Low T', '5,404', '63/78', '新增 Group 9：9B CANNOT HAVE ATC A10BJ，於 9A 前 365d 至後 365d 內'],
+    ['SA-GLP1 Normal T', '15769162', 'S5R-A SA-GLP1 Normal T', '80,459', '73/78', '同上 Group 9（貼上並回讀驗證）'],
+    ['SA-Alcohol Low T', '15769199', 'S5R-A SA-Alcohol Low T', '5,157', '63/78', '新增 Group 9：9B CANNOT HAVE F10/Z71.41/R78.0/Y90/K70，於 9A 後 1–3650d 內'],
+    ['SA-Alcohol Normal T', '15769261', 'S5R-A SA-Alcohol Normal T', '76,946', '73/78', '同上 Group 9（貼上並回讀驗證）'],
+    ['TT400 Normal T', '15769306', 'S5R-A TT400 Normal T', '54,349', '73/78', '由 15755366 複製；修改 1B ≥400.1、4B (同日) 與 7B (1–365d) 排除 0–400 ng/dL；Group 6 維持 0–300'],
+    ['Age 40–64 (L/N)', '15771046 / 15771051', 'S5R-A Age40-64 Low T / Normal T', '4,498 / 69,176', '63 / 73', '新增 Group 9：9B MUST HAVE LG11398-1 (40–64y，無數值限制)，與 9A 同日'],
+    ['Age 65–90 (L/N)', '15771077 / 15771080', 'S5R-A Age65-90 Low T / Normal T', '914 / 11,316', '58 / 71', '新增 Group 9：9B MUST HAVE LG11398-1 (65–90y，無數值限制)，與 9A 同日'],
+    ['White (L/N)', '15772149 / 15772177', 'S5R-A White Low T / Normal T', '4,161 / 61,665', '62 / 72', '新增 Ungrouped MUST HAVE Demographics White'],
+    ['Black (L/N)', '15772204 / 15772238', 'S5R-A Black Low T / Normal T', '518 / 7,037', '49 / 68', '新增 Ungrouped MUST HAVE Demographics Black or African American'],
+    ['Asian (L/N)', '15772261 / 15772279', 'S5R-A Asian Low T / Normal T', '109 / 1,725', '33 / 60', '新增 Ungrouped MUST HAVE Demographics Asian'],
+    ['Hispanic (L/N)', '15772307 / 15772328', 'S5R-A Hispanic Low T / Normal T', '279 / 4,482', '44 / 63', '新增 Ungrouped MUST HAVE Demographics Hispanic or Latino'],
+    ['NotHispanic (L/N)', '15772359 / 15772365', 'S5R-A NotHispanic Low T / Normal T', '3,771 / 57,114', '60 / 68', '新增 Ungrouped MUST HAVE Demographics Not Hispanic or Latino']
+  ];
+
+  document.getElementById('tbody-queries').innerHTML = queries.map(q => `
+    <tr>
+      <td><strong>${q[0]}</strong></td>
+      <td><span class="code">${q[1]}</span></td>
+      <td>${q[2]}</td>
+      <td class="num">${q[3]}</td>
+      <td class="num">${q[4]}</td>
+      <td>${q[5]}</td>
+    </tr>
+  `).join('');
+</script>
+</body>
+</html>
