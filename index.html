@@ -241,6 +241,29 @@
           本研究同時提供 <strong>路線一 <code>P3-2TA</code>（入組即強制符合 ≥1 項基線 CMRF，嚴格貼合 MASLD 定義，n=8,608 對）</strong>作為敏感度對照，10 年風險同樣高度顯著（<strong>HR 1.252, p &lt; 0.0001</strong>；H25 NS），直接驗證無論採「無確診代謝疾病前瞻主軸（S5R-A）」或「嚴格 CMRF 條件（P3-2TA）」，結論皆完全一致。
         </div>
       </div>
+
+      <h3 style="margin:14px 0 6px; color:#134e4a; font-size:13.8px;">主要與代謝風險 Outcome 精確代碼與閾值定義（O1–O8，各項內部以 <span class="code">OR</span> 連接，皆勾選 Exclude prior outcome）</h3>
+      <div class="table-wrap" style="background:#fff;">
+        <table>
+          <thead>
+            <tr>
+              <th>Outcome</th>
+              <th>名稱</th>
+              <th>完整納入代碼與檢驗閾值（<span class="code">MUST HAVE</span> + <span class="code">OR</span>；檢驗採 most recent value）</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr><td><strong>O1</strong></td><td><strong>MASLD-related diagnosis</strong></td><td><span class="code">ICD-10-CM K76.0</span>（脂肪肝）<strong>OR</strong> <span class="code">K75.81</span>（NASH/MASH）*(另於敏感度拆跑純 K76.0、單獨 K75.81、K74 及 K75.81 OR K74)*</td></tr>
+            <tr><td><strong>O2</strong></td><td><strong>Negative Control</strong></td><td><span class="code">ICD-10-CM H25</span>（Age-related cataract，老年性白內障）</td></tr>
+            <tr><td><strong>O3</strong></td><td><strong>Incident Obesity</strong></td><td><span class="code">ICD-10-CM E66</span> <strong>OR</strong> <span class="code">TNX 9083 BMI ≥ 30 kg/m²</span></td></tr>
+            <tr><td><strong>O4</strong></td><td><strong>Incident T2DM</strong></td><td><span class="code">ICD-10-CM E11</span> <strong>OR</strong> <span class="code">TNX 9037 HbA1c ≥ 6.5 %</span></td></tr>
+            <tr><td><strong>O5</strong></td><td><strong>Incident Prediabetes+</strong></td><td><span class="code">ICD-10-CM R73</span> <strong>OR</strong> <span class="code">E11</span> <strong>OR</strong> <span class="code">TNX 9037 HbA1c ≥ 5.7 %</span> <strong>OR</strong> <span class="code">LOINC 1558-6 Fasting glucose ≥ 100 mg/dL</span></td></tr>
+            <tr><td><strong>O6</strong></td><td><strong>Incident Hypertension</strong></td><td><span class="code">ICD-10-CM I10-I1A</span>（Hypertensive diseases，純診斷碼，不含單次血壓數值）</td></tr>
+            <tr><td><strong>O7</strong></td><td><strong>Incident Dyslipidemia</strong></td><td><span class="code">ICD-10-CM E78</span> <strong>OR</strong> <span class="code">TNX 9004 Triglyceride ≥ 150 mg/dL</span> <strong>OR</strong> <span class="code">TNX 9001 HDL ≤ 40 mg/dL</span></td></tr>
+            <tr><td><strong>O8</strong></td><td><strong>Any Metabolic Risk Factor</strong></td><td>上述 O3–O7 全部 <strong>10 項（5 診斷＋5 檢驗）之聯集</strong>：<span class="code">E66 / E11 / R73 / I10-I1A / E78 / BMI≥30 / HbA1c≥5.7% / FG≥100 / TG≥150 / HDL≤40</span></td></tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div class="reviewer-bar">
