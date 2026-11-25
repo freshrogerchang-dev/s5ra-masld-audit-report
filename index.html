@@ -161,6 +161,26 @@
     width: 24px; height: 24px; border-radius: 999px; background: var(--primary); color: #fff;
     font-size: 12px; font-weight: 700; margin-right: 8px;
   }
+  .reviewer-bar {
+    background: linear-gradient(135deg, #eff6ff 0%, #f0fdfa 100%);
+    border: 1.5px solid #93c5fd; border-radius: var(--radius);
+    padding: 14px 18px; margin-bottom: 18px; box-shadow: var(--shadow);
+  }
+  .reviewer-bar-title {
+    font-size: 13.5px; font-weight: 700; color: #1e3a8a; margin-bottom: 10px;
+    display: flex; align-items: center; gap: 8px; flex-wrap: wrap;
+  }
+  .jump-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 10px; }
+  .jump-btn {
+    text-align: left; cursor: pointer; background: #fff; border: 1px solid #bfdbfe;
+    border-radius: 9px; padding: 10px 13px; transition: all 0.15s;
+    display: flex; flex-direction: column; gap: 3px;
+  }
+  .jump-btn:hover { border-color: var(--primary); background: #f8fafc; transform: translateY(-1px); box-shadow: 0 3px 8px rgba(29,78,216,0.1); }
+  .jump-btn strong { color: #1d4ed8; font-size: 13px; }
+  .jump-btn span { color: var(--muted); font-size: 12px; line-height: 1.45; }
+  @keyframes flashHighlight { 0% { box-shadow: 0 0 0 4px rgba(37,99,235,0.45); } 100% { box-shadow: var(--shadow); } }
+  .highlight-flash { animation: flashHighlight 1.6s ease; }
   footer {
     text-align: center; color: var(--light-muted); font-size: 12px; padding: 24px; border-top: 1px solid var(--border);
   }
@@ -179,11 +199,11 @@
       <span class="badge badge-hero">TriNetX Study 410562 · testosterone and MAFLD</span>
       <span class="badge badge-hero">US Collaborative Network</span>
       <span class="badge badge-hero">Primary Axis: S5R-A (2011–2020)</span>
-      <span class="badge badge-hero">Updated: 2026-11-24</span>
+      <span class="badge badge-hero">Updated: 2026-11-25</span>
     </div>
-    <h1>低睪固酮與 MASLD、MASH 及代謝異常之長期風險：S5R-A 主軸審核報告</h1>
+    <h1>低睪固酮與 MASLD、MASH、MACE 及代謝異常之長期風險：S5R-A 主軸審核報告</h1>
     <p class="hero-sub">
-      以 <strong>S5R-A（2011–2020 無既有確診代謝疾病男性世代，n = 5,396 vs 80,493）</strong> 為研究主軸，整合 5 年／10 年 MASLD、MASH（K75.81）、肝硬化（K74）、代謝異常（O3–O8）、TRT 新使用者分析（S5R-A TRT-NU）、5 大內部敏感度測試、7 組人口學次分析、跨路線敏感度對照（路線一 P3-2TA 與路線二 S5-2TA）、EndNote 文獻引用落點與 TriNetX 分析師稽核步驟。
+      以 <strong>S5R-A（2011–2020 無既有確診代謝疾病男性世代，n = 5,396 vs 80,493）</strong> 為研究主軸，整合 5 年／10 年 MASLD、MASH（K75.81）、肝硬化（K74）、<strong>MASH+肝硬化複合結局</strong>、MACE（3P/4P）、代謝異常（O3–O8 含 O8 參數稽核）、<strong>荷爾蒙使用分層敏感度（Hormone+ vs Hormone-）</strong>、5 大內部敏感度測試、7 組人口學次分析、跨路線敏感度對照（路線一 P3-2TA 與路線二 S5-2TA）、EndNote 文獻引用落點與 TriNetX 分析師稽核步驟。
     </p>
   </div>
 </header>
@@ -202,6 +222,27 @@
 <main>
   <!-- ================= TAB 1: OVERVIEW & PRIMARY ================= -->
   <section id="tab-overview" class="tab-panel active">
+    <div class="reviewer-bar">
+      <div class="reviewer-bar-title">
+        <span>審稿者重點回覆與快速導覽（Reviewer Highlights — 點選卡片直接跳轉檢視）</span>
+        <span class="badge badge-primary">2026-11-25 更新</span>
+      </div>
+      <div class="jump-grid">
+        <button class="jump-btn" onclick="jumpTo('overview','sec-o8-audit')">
+          <strong>1. O8 Any Metabolic Risk 參數稽核與成因解析 →</strong>
+          <span>已至 TriNetX 逐條確認 10 項參數完全正確；說明為何 O3–O6 十年顯著而 O8 10y HR 1.096 (p=0.063)</span>
+        </button>
+        <button class="jump-btn" onclick="jumpTo('overview','sec-mash-cirrhosis')">
+          <strong>2. MASH + 肝硬化複合結局（K75.81 OR K74） →</strong>
+          <span>10y (4,762對) HR 1.349 (0.957–1.901, p=0.0864)；5y (5,001對) HR 0.949 (p=0.8285)</span>
+        </button>
+        <button class="jump-btn" onclick="jumpTo('sensitivity','sec-hormone-sa')">
+          <strong>3. 荷爾蒙使用分層敏感度（Hormone+ vs Hormone-） →</strong>
+          <span>已移除 TRT-NU 章節，改以無荷爾蒙（10y HR 1.552, p&lt;0.0001）vs 有用荷爾蒙（10y HR 1.364, p=0.164）呈現</span>
+        </button>
+      </div>
+    </div>
+
     <div class="kpi-grid">
       <div class="kpi">
         <div class="kpi-label">S5R-A 10y MASLD (主結局)</div>
@@ -224,9 +265,9 @@
         <div class="kpi-sub">95% CI 0.720–1.093 · p = 0.2600<br/>全系列敏感度 H25 皆為無顯著</div>
       </div>
       <div class="kpi">
-        <div class="kpi-label">S5R-A TRT-NU 10y MASLD</div>
-        <div class="kpi-val blue">HR 1.191</div>
-        <div class="kpi-sub">95% CI 0.785–1.809 · p = 0.4105<br/>5y HR 1.004 · 未見 TRT 保護效應</div>
+        <div class="kpi-label">MASH + 肝硬化 (10y 複合)</div>
+        <div class="kpi-val blue">HR 1.349</div>
+        <div class="kpi-sub">95% CI 0.957–1.901 · p = 0.0864<br/>n = 4,762 對 (0 SMD &gt; 0.1)</div>
       </div>
       <div class="kpi">
         <div class="kpi-label">劑量梯度 (TT400 10y)</div>
@@ -242,7 +283,7 @@
 
     <div class="callout accent">
       <strong>主軸敘事核心（為何以 S5R-A 為主軸）：</strong>
-      在基線<strong>尚未確診任何代謝疾病（排除 15 項 ICD-10 診斷，如 E66、E11、I10–I1A、E78 等）</strong>的 40–90 歲男性中，低總睪固酮（≤300 ng/dL）在 1:1 PSM 完全平衡（所有 41 項共變項 SMD &lt; 0.082，BMI 26.4 vs 26.3 SMD 0.043）下，仍顯著預測 5 年（HR 1.475）與 10 年（HR 1.372）新發 MASLD、10 年 <strong>MASH（K75.81, HR 2.124）</strong> 以及各項新發代謝異常（Obesity、T2DM、Prediabetes、HTN，HR 1.35–1.68），而白內障陰性對照（H25）完全無差異。然而，在同世代低 T 患者中啟動 TRT（<code>S5R-A TRT-NU</code>）並未降低 5 年或 10 年 MASLD 或代謝疾病風險。
+      在基線<strong>尚未確診任何代謝疾病（排除 15 項 ICD-10 診斷，如 E66、E11、I10–I1A、E78 等）</strong>的 40–90 歲男性中，低總睪固酮（≤300 ng/dL）在 1:1 PSM 完全平衡（所有 41 項共變項 SMD &lt; 0.082，BMI 26.4 vs 26.3 SMD 0.043）下，仍顯著預測 5 年（HR 1.475）與 10 年（HR 1.372）新發 MASLD、10 年 <strong>MASH（K75.81, HR 2.124）</strong>、10 年 <strong>4P-MACE（HR 1.469）</strong> 以及各項新發代謝異常（Obesity、T2DM、Prediabetes、HTN，HR 1.35–1.68），而白內障陰性對照（H25）完全無差異。此外，在排除追蹤期使用外源性荷爾蒙（<code>SA-Hormone(-)</code>）後，低 T 與 10 年 MASLD 關聯更強且高度穩健（HR 1.552, p&lt;0.0001）。
     </div>
 
     <div class="callout">
@@ -356,12 +397,18 @@
           </tbody>
         </table>
       </div>
+      <div id="sec-o8-audit" class="callout warn" style="margin-top:14px;">
+        <strong>【審稿重點 1】O8 Any Metabolic Risk 參數稽核與數理成因解析（2026-11-25 實測驗證）：</strong><br/>
+        • <strong>參數完全無誤</strong>：已至 TriNetX <span class="code">6b045964bc9814e98f7efc57</span> 只讀逐條核對 O8 全部 10 項條件——5 項診斷（<code>E66</code>、<code>E11</code>、<code>R73</code>、<code>I10-I1A</code>、<code>E78</code>）＋ 5 項檢驗（<code>9083 BMI ≥30</code>、<code>9037 HbA1c ≥5.7%</code>、<code>1558-6 Fasting glucose ≥100</code>、<code>9004 TG ≥150</code>、<code>9001 HDL ≤40</code>，均為 most recent value）皆位於 <code>MUST HAVE</code> 且以 <code>OR</code> 連接，MoA 與 KM 的 <code>Exclude prior</code> 均正確勾選。<br/>
+        • <strong>為何 O3–O6 十年 HR 均顯著（1.35–1.68），但 O8 十年 HR 僅 1.096（p=0.063）？</strong>① S5R-A 基線僅排除「既有確診代謝疾病」，未排除次臨床異常檢驗；當 O8 啟用 <code>Exclude prior</code> 時，多達 <strong>63.4% Low T（2,381/3,757）</strong>與 <strong>50.8% Normal T（1,907/3,757）</strong>因基線次臨床異常被排除，剩餘可分析樣本嚴重非對稱縮減（1,376 vs 1,850）；② 剩餘族群中發生率最高的組成是 <strong>O7 血脂異常（約 40%，HR 1.028）</strong>，主導了複合結局首次事件並稀釋 O3–O6 效應；③ O8 於 <strong>5 年期確實達顯著（HR 1.236, p=0.0001）</strong>，至 10 年時因兩組累積事件率雙雙突破 50% 導致存活曲線收斂（PH test p &lt; 0.0001）。
+      </div>
     </div>
 
-    <div class="card">
-      <h2>二、肝臟進階結局（Steatosis / MASH / Fibrosis &amp; Cirrhosis） <span class="badge badge-danger">新完成</span></h2>
+    <div id="sec-mash-cirrhosis" class="card">
+      <h2>二、肝臟進階結局（Steatosis / MASH / 肝硬化 / MASH+肝硬化複合結局） <span class="badge badge-danger">2026-11-25 更新</span></h2>
       <p class="card-desc">
-        10 年版 ID <span class="code">6b0521f5bc9814e98f8205c0</span>（4,881 對，Max SMD 0.0661）；5 年版 ID <span class="code">6b052559009e92e9b786972e</span>（4,896 對，Max SMD 0.0753）。兩者皆 <strong>0 項 SMD &gt; 0.1</strong>。
+        分項結局：10 年版 ID <span class="code">6b0521f5bc9814e98f8205c0</span>（4,881 對，Max SMD 0.0661）；5 年版 ID <span class="code">6b052559009e92e9b786972e</span>（4,896 對，Max SMD 0.0753）。<br/>
+        <strong>【審稿重點 2】複合結局（MASH OR 肝硬化：`K75.81 OR K74`）</strong>：10 年版 ID <span class="code">6b0669a8c3a8d50320393503</span>（4,762 對，Max SMD 0.0768）；5 年版 ID <span class="code">6b066c96c25d49f5acab5a0c</span>（5,001 對，Max SMD 0.0909）。四案皆 <strong>0 項 SMD &gt; 0.1</strong>。
       </p>
       <div class="table-wrap">
         <table>
@@ -407,15 +454,25 @@
               <td>25/4,892 vs 23/4,892</td>
               <td>1.053 (0.598–1.855) / 0.8587</td>
             </tr>
+            <tr style="background:#eff6ff;">
+              <td><strong>★ 複合結局：MASH 或 肝硬化 (`K75.81 OR K74`)</strong></td>
+              <td><strong>78/4,755 (1.64%) vs 56/4,750 (1.18%)</strong></td>
+              <td>+0.46% (0.0564)</td>
+              <td><strong>1.349 (0.957–1.901)</strong></td>
+              <td>0.0864</td>
+              <td>0.8531</td>
+              <td>34/4,993 vs 35/4,994</td>
+              <td>0.949 (0.592–1.522) / 0.8285</td>
+            </tr>
             <tr>
-              <td><strong>O2 陰性對照 (`H25`)</strong></td>
-              <td>237/4,825 (4.91%) vs 214/4,834 (4.43%)</td>
-              <td>+0.49% (0.2587)</td>
-              <td class="ns-text">1.073 (0.892–1.291)</td>
-              <td>0.4561</td>
-              <td>0.2361</td>
-              <td>114/4,840 vs 119/4,845</td>
-              <td>0.927 (0.717–1.198) / 0.5619</td>
+              <td><strong>O2 陰性對照 (`H25`, 複合分析同步對照)</strong></td>
+              <td>233/4,709 (4.95%) vs 248/4,713 (5.26%)</td>
+              <td>-0.31% (0.4886)</td>
+              <td class="ns-text">0.908 (0.760–1.086)</td>
+              <td>0.2916</td>
+              <td>0.2101</td>
+              <td>119/4,945 vs 115/4,940</td>
+              <td>1.010 (0.782–1.305) / 0.9391</td>
             </tr>
           </tbody>
         </table>
@@ -509,38 +566,6 @@
         </table>
       </div>
     </div>
-
-    <div class="card">
-      <h2>四、S5R-A TRT 新使用者分析（`S5R-A TRT-NU`） <span class="badge badge-purple">15757281 vs 15757397</span></h2>
-      <p class="card-desc">
-        在 S5R-A 低 T 母體（`15755247`）內比較 0–180 天啟動 TRT（n=876）vs 0–365 天未用 TRT（n=4,246）；45 項共變項（移除 `HS100`、補入 `E29.1/N52/F32/F33` 與 `LG11398-1` 三分層 `0–200 / 200–250 / 250–300`）。10 年版 ID <span class="code">6b0470a90b258a111a30e48b</span>（830 對，T SMD 0.0574，BMI SMD 0.0228）；5 年版 ID <span class="code">6b04c53a0b258a111a322e8a</span>（788 對，T SMD 0.0153，BMI SMD 0.0352）。
-      </p>
-      <div class="table-wrap">
-        <table>
-          <thead>
-            <tr>
-              <th>Outcome</th>
-              <th>10y Events (TRT vs Ctrl)</th>
-              <th>10y HR (95% CI)</th>
-              <th>10y Log-rank p</th>
-              <th>5y Events (TRT vs Ctrl)</th>
-              <th>5y HR (95% CI)</th>
-              <th>5y Log-rank p</th>
-            </tr>
-          </thead>
-          <tbody>
-            <tr><td><strong>O1 MASLD</strong></td><td>49/826 (5.93%) vs 40/822 (4.87%)</td><td>1.191 (0.785–1.809)</td><td>0.4105</td><td>18/785 (2.29%) vs 17/781 (2.18%)</td><td>1.004 (0.518–1.949)</td><td>0.9895</td></tr>
-            <tr><td><strong>O2 H25 (陰性對照)</strong></td><td>47/814 (5.77%) vs 43/821 (5.24%)</td><td>1.089 (0.720–1.647)</td><td>0.6859</td><td>27/774 (3.49%) vs 18/779 (2.31%)</td><td>1.450 (0.799–2.632)</td><td>0.2195</td></tr>
-            <tr><td><strong>O3 Obesity</strong></td><td>214/636 (33.65%) vs 210/718 (29.25%)</td><td>1.174 (0.970–1.420)</td><td>0.0984</td><td>145/607 (23.89%) vs 124/671 (18.48%)</td><td class="sig-text">1.273 (1.001–1.617)</td><td class="sig-text">0.0481</td></tr>
-            <tr><td><strong>O4 T2DM</strong></td><td>77/778 (9.90%) vs 88/795 (11.07%)</td><td>0.875 (0.644–1.188)</td><td>0.3906</td><td>51/736 (6.93%) vs 53/765 (6.93%)</td><td>0.953 (0.649–1.400)</td><td>0.8074</td></tr>
-            <tr><td><strong>O5 Prediabetes</strong></td><td>193/670 (28.81%) vs 199/680 (29.27%)</td><td>0.952 (0.781–1.160)</td><td>0.6233</td><td>115/631 (18.23%) vs 117/652 (17.95%)</td><td>0.958 (0.740–1.239)</td><td>0.7413</td></tr>
-            <tr><td><strong>O6 HTN</strong></td><td>208/716 (29.05%) vs 211/750 (28.13%)</td><td>0.998 (0.824–1.208)</td><td>0.9806</td><td>123/676 (18.20%) vs 135/719 (18.78%)</td><td>0.906 (0.710–1.157)</td><td>0.4302</td></tr>
-            <tr><td><strong>O7 Dyslipidemia</strong></td><td>196/444 (44.14%) vs 163/462 (35.28%)</td><td class="sig-text">1.334 (1.084–1.643)</td><td class="sig-text">0.0064</td><td>130/423 (30.73%) vs 104/440 (23.64%)</td><td>1.262 (0.975–1.633)</td><td>0.0765 (RD p=0.0191)</td></tr>
-            <tr><td><strong>O8 AnyMetRisk</strong></td><td>173/307 (56.35%) vs 175/353 (49.58%)</td><td>1.190 (0.964–1.468)</td><td>0.1048</td><td>130/296 (43.92%) vs 107/331 (32.33%)</td><td class="sig-text">1.336 (1.034–1.725)</td><td class="sig-text">0.0261</td></tr>
-          </tbody>
-        </table>
-      </div>
-    </div>
   </section>
 
   <!-- ================= TAB 2: FLOWCHART ================= -->
@@ -617,16 +642,17 @@
           <text x="480" y="429" text-anchor="middle" fill="#e2e8f0" font-size="11.5">41 項基線共變項（-365 至 0 天）· Index Event 僅勾 Group 1</text>
           <text x="480" y="446" text-anchor="middle" fill="#86efac" font-size="11.5" font-weight="600">主分析與全數 10 項肝臟／敏感度分析配對後皆 0 項 SMD &gt; 0.1</text>
 
-          <!-- TRT-NU Branch from Low T -->
+          <!-- Hormone Stratified Sensitivity Branch -->
           <path d="M 140 332 L 140 478" fill="none" stroke="#6d28d9" stroke-width="2" marker-end="url(#arr)"/>
-          <rect x="20" y="480" width="240" height="148" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.8"/>
-          <text x="140" y="503" text-anchor="middle" fill="#4c1d95" font-size="13" font-weight="700">S5R-A TRT-NU 介入分支</text>
-          <text x="140" y="521" text-anchor="middle" fill="#5b21b6" font-size="11">15757281 (d0-180 TRT, n=876)</text>
-          <text x="140" y="537" text-anchor="middle" fill="#5b21b6" font-size="11">vs 15757397 (d0-365 無TRT, n=4,246)</text>
-          <text x="140" y="556" text-anchor="middle" fill="#475569" font-size="11">45 項共變項（移HS100，補T分層）</text>
-          <text x="140" y="576" text-anchor="middle" fill="#0f172a" font-size="11.5" font-weight="700">10y (830對): MASLD HR 1.191</text>
-          <text x="140" y="593" text-anchor="middle" fill="#0f172a" font-size="11.5" font-weight="700">5y (788對): MASLD HR 1.004</text>
-          <text x="140" y="612" text-anchor="middle" fill="#64748b" font-size="10.5">H25 陰性對照 NS · 未見保護效應</text>
+          <rect x="20" y="480" width="240" height="162" rx="10" fill="#f5f3ff" stroke="#7c3aed" stroke-width="1.8"/>
+          <text x="140" y="503" text-anchor="middle" fill="#4c1d95" font-size="13" font-weight="700">荷爾蒙分層敏感度測試</text>
+          <text x="140" y="521" text-anchor="middle" fill="#5b21b6" font-size="11">對照組：Normal T 無荷爾蒙 (15785063)</text>
+          <text x="140" y="542" text-anchor="middle" fill="#0f172a" font-size="11.5" font-weight="700">• 無荷爾蒙 SA-Hormone(-)</text>
+          <text x="140" y="559" text-anchor="middle" fill="#b91c1c" font-size="11.5" font-weight="700">10y (3,959對): HR 1.552*</text>
+          <text x="140" y="575" text-anchor="middle" fill="#475569" font-size="11">5y (4,013對): HR 1.210 (NS)</text>
+          <text x="140" y="597" text-anchor="middle" fill="#0f172a" font-size="11.5" font-weight="700">• 有用荷爾蒙 SA-Hormone(+)</text>
+          <text x="140" y="614" text-anchor="middle" fill="#475569" font-size="11.5">10y (848對): HR 1.364 (NS)</text>
+          <text x="140" y="630" text-anchor="middle" fill="#64748b" font-size="10.5">5y (824對): HR 1.080 · H25 全 NS</text>
 
           <!-- Downstream 3 Branches from PSM -->
           <path d="M 480 456 L 480 480" fill="none" stroke="#475569" stroke-width="2" marker-end="url(#arr)"/>
@@ -688,6 +714,84 @@
       <h2>S5R-A 敏感度分析與跨路線對照 Forest Plot（10 年期 MASLD HR）</h2>
       <p class="card-desc">紅色點表示 p &lt; 0.05 顯著風險上升，灰色點表示未達統計顯著；虛線為 HR = 1.0。</p>
       <div class="forest-wrap" id="forest-sensitivity"></div>
+    </div>
+
+    <div id="sec-hormone-sa" class="card">
+      <h2>【審稿重點 3】荷爾蒙使用分層敏感度測試：無荷爾蒙（`SA-Hormone(-)`）vs 有用荷爾蒙（`SA-Hormone(+)`） <span class="badge badge-purple">2026-11-25 新增</span></h2>
+      <p class="card-desc">
+        本分析取代獨立 TRT-NU 章節，改以乾淨的 <strong>S5R-A Normal T 無荷爾蒙對照組（Query <span class="code">15785063</span>，n=73,381，index 後 0–365 天內無 6 項 TRT 代碼）</strong> 為統一基準，分別檢視低 T 族群於「未使用荷爾蒙（`15757397`, d0–365 無 TRT）」與「有使用荷爾蒙（`15757281`, d0–180 啟動 TRT）」下的 10 年與 5 年 MASLD 風險（維持完全一致之 41 項 PSM 共變項與 Index Group 1）。
+      </p>
+      <div class="callout accent">
+        <strong>判讀重點：</strong>在完全排除外源性荷爾蒙干擾的 <strong><code>SA-Hormone(-)</code></strong> 組中，10 年期（3,959 對，<strong>0 項 SMD &gt; 0.1</strong>）低 T 顯著增加 MASLD 風險 <strong>HR 1.552 (1.254–1.919, p &lt; 0.0001)</strong>，證實主結果並非由 TRT 處方造成；而 <strong><code>SA-Hormone(+)</code></strong> 組（848 對）點估計仍呈同方向上升（10 年 HR 1.364, p=0.1640；5 年 HR 1.080, p=0.8236），兩組陰性對照 H25 皆無顯著差異。
+      </div>
+      <div class="table-wrap">
+        <table>
+          <thead>
+            <tr>
+              <th>荷爾蒙分層敏感度</th>
+              <th>時間窗</th>
+              <th>Analysis ID</th>
+              <th class="num">配對數 (對)</th>
+              <th class="num">Max SMD</th>
+              <th>O1 MASLD Events</th>
+              <th>O1 HR (95% CI)</th>
+              <th>Log-rank p</th>
+              <th>PH p</th>
+              <th>O2 H25 HR (p)</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td><strong>SA-Hormone(-) 無荷爾蒙</strong><br/><span style="font-size:11.5px;color:#64748b;">Low T 無TRT vs Normal T 無TRT</span></td>
+              <td>10y (365–3650)</td>
+              <td><span class="code">6b067540c25d49f5acab750f</span></td>
+              <td class="num">3,959</td>
+              <td class="num">0.0838 (0 &gt;0.1)</td>
+              <td>219/3,936 (5.56%) vs 139/3,950 (3.52%)</td>
+              <td class="sig-text">1.552 (1.254–1.919)</td>
+              <td class="sig-text">&lt; 0.0001</td>
+              <td>0.3034</td>
+              <td>0.895 (0.277)</td>
+            </tr>
+            <tr>
+              <td><strong>SA-Hormone(-) 無荷爾蒙</strong></td>
+              <td>5y (365–1825)</td>
+              <td><span class="code">6b06779a7df6bb8e1b009055</span></td>
+              <td class="num">4,013</td>
+              <td class="num">0.0727 (0 &gt;0.1)</td>
+              <td>95/3,990 (2.38%) vs 77/4,002 (1.92%)</td>
+              <td>1.210 (0.896–1.635)</td>
+              <td>0.2121</td>
+              <td>0.9987</td>
+              <td>1.008 (0.959)</td>
+            </tr>
+            <tr>
+              <td><strong>SA-Hormone(+) 有用荷爾蒙</strong><br/><span style="font-size:11.5px;color:#64748b;">Low T 用TRT vs Normal T 無TRT</span></td>
+              <td>10y (365–3650)</td>
+              <td><span class="code">6b066fb37df6bb8e1b0074f8</span></td>
+              <td class="num">848</td>
+              <td class="num">0.2693 (HbA1c連續)</td>
+              <td>48/844 (5.69%) vs 34/845 (4.02%)</td>
+              <td>1.364 (0.879–2.117)</td>
+              <td>0.1640</td>
+              <td>0.3595</td>
+              <td>1.108 (0.623)</td>
+            </tr>
+            <tr>
+              <td><strong>SA-Hormone(+) 有用荷爾蒙</strong></td>
+              <td>5y (365–1825)</td>
+              <td><span class="code">6b0672f0c25d49f5acab6e90</span></td>
+              <td class="num">824</td>
+              <td class="num">0.2392 (HbA1c連續)</td>
+              <td>18/821 (2.19%) vs 16/824 (1.94%)</td>
+              <td>1.080 (0.551–2.117)</td>
+              <td>0.8236</td>
+              <td>0.1560</td>
+              <td>1.410 (0.245)</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
 
     <div class="card">
@@ -861,7 +965,7 @@
           <h3><span class="step-num">4</span>Results &amp; Discussion（三大核心論點）</h3>
           <p><strong>論點 A（肝臟階段特異性）</strong>：低 T 顯著提升 10 年 MASLD（HR 1.372）、單純脂肪肝（HR 1.587）與 <strong>MASH（HR 2.124, p=0.0166）</strong>，但未提升 10 年肝硬化（K74, HR 0.927）——符合在「基線無確診代謝疾病」的相對早期世代中，10 年足以觀察到脂肪變性與發炎（MASH），而進展至肝硬化常需更長自然病史（對照 <strong>Sarkar 2021</strong>）。<br/>
           <strong>論點 B（代謝惡化先行與中介角色）</strong>：低 T 同步推升 Obesity、T2DM、Prediabetes、HTN（HR 1.35–1.68），顯示低 T 可能透過內臟脂肪堆積與胰島素阻抗驅動 MASLD（與 <strong>Seo 2015</strong> 差異可能源於樣本數、確認性低 T 定義與 10 年追蹤期）；且次分析顯示效應集中於 40–64 歲中年男性與白人／非西語裔。<br/>
-          <strong>論點 C（TRT 中性結果的審慎判讀）</strong>：無論在 S5R-A（10y HR 1.191, 5y HR 1.004）或路線一（NU/T2/T5 HR 0.98–1.16），現實世界 TRT 均未降低 MASLD 風險（對照女性 HRT 研究 <strong>Henney 2026</strong>），可能反映指徵混淆、治療遵從度／劑量異質性，或外源性補充無法單獨逆轉已啟動的代謝軌跡；需透過隨機試驗驗證，切勿過度宣稱因果無效。<br/>
+          <strong>論點 C（荷爾蒙使用分層敏感度判讀）</strong>：區分有無使用外源性荷爾蒙後，未用荷爾蒙組（<code>SA-Hormone(-)</code>，3,959 對）10 年 MASLD 風險依然高度顯著（HR 1.552, p&lt;0.0001），證實內生性低睪固酮本身即與 MASLD 風險相關，而非外源性處方或就醫行為干擾；有用荷爾蒙組（<code>SA-Hormone(+)</code>，848 對）點估計呈同方向但未達顯著（HR 1.364, p=0.164），對照女性 HRT 研究（<strong>Henney 2026</strong>），提醒外源性荷爾蒙對肝臟結局的影響仍需隨機對照試驗釐清。<br/>
           <strong>論點 D（相較既有 TriNetX 研究之方法學優勢 — 直接對照 Stokar 2026）</strong>：於 Discussion 獨立設段說明本研究雖借鏡 <strong>Stokar 2026</strong> 之 TriNetX PSM 與次分析架構，但針對其三大限制完成關鍵升級：① 基線即排除 15 項確診代謝疾病（並以 P3-2TA 與 S5-2TA 橫跨三個代謝光譜驗證）；② 以 Day 365 Landmark（搭配 SA-Lag2 Day 730）取代追蹤期後設排除，徹底消除未來資訊與不死時間偏差；③ 由單一 <code>K76.0</code> 擴展至 <code>K76.0/K75.81</code> 複合結局、純 <code>K76.0</code> 敏感度及 <code>K75.81</code>（MASH）／<code>K74</code>（肝硬化）分期評估，大幅提升因果時序可信度。<br/>
           <strong>論點 E（心血管 MACE 與全因死亡延伸）</strong>：在無基線確診代謝疾病族群中，低 T 同時顯著增加 5 年與 10 年 3P/4P-MACE（HR 1.34–1.47），且主要由心臟衰竭（I50, HR ~1.42）與全因死亡（HR 1.79–1.86）驅動，呼應 <strong>Cho 2026</strong> 對血管併發症之關注，並提醒於 Limitations 說明全因死亡之競爭風險（competing risk）對 10 年肝硬化（K74）觀察可能造成的低估效應。</p>
         </div>
@@ -919,12 +1023,12 @@
           </ul>
         </div>
         <div class="step-box">
-          <strong>S5R-A TRT-NU（介入分析）：45 項共變項</strong>
+          <strong>2026-11-25 審稿增補項目稽核摘要</strong>
           <ul style="margin:6px 0 0; padding-left:18px; font-size:12.8px; color:#334155;">
-            <li>沿用上述 41 項共變項，<strong>移除 <code>VA HS100</code>（Androgens/anabolics）</strong> 避免過度配對暴露本身。</li>
-            <li>比照路線一 <code>TRT-NU</code> 補入 4 項臨床指徵診斷（Present/Absent）：<strong><code>E29.1</code>（性腺功能低下）、<code>N52</code>（勃起功能障礙）、<code>F32</code>、<code>F33</code>（憂鬱症）</strong>。</li>
-            <li>補入 <strong><code>LG11398-1</code> 基線總睪固酮三分層</strong>：<code>0–200</code>、<code>200–250</code>、<code>250–300 ng/dL</code>（配對後連續 T SMD 0.0574 [10y] / 0.0153 [5y]，三分層 SMD 全 &lt; 0.032）。</li>
-            <li><strong>Outcomes 稽核</strong>：Index Event 兩組皆僅勾 <code>Group 1</code>（<code>1 Term Selected × 2</code>）；MoA 與 KM 兩個 <code>Exclude prior outcome</code> 皆勾選；<code>Compare after matching</code> 皆勾選。</li>
+            <li><strong>O8 Any Metabolic Risk 參數核對</strong>：於 <span class="code">6b045964bc9814e98f7efc57</span> 只讀逐項確認 10 項（5 診斷＋5 檢驗，OR 連接，Exclude prior x2），參數無誤；10y 非顯著（HR 1.096）係因基線次臨床異常排除 63.4% vs 50.8% 且 O7 血脂異常主導。</li>
+            <li><strong>MASH + 肝硬化複合結局（`K75.81 OR K74`）</strong>：10y <span class="code">6b0669a8c3a8d50320393503</span>（4,762 對，HR 1.349, p=0.0864）；5y <span class="code">6b066c96c25d49f5acab5a0c</span>（5,001 對，HR 0.949, p=0.8285），兩者皆 0 項 SMD &gt; 0.1。</li>
+            <li><strong>荷爾蒙分層敏感度（`Hormone+` vs `Hormone-`）</strong>：新建乾淨對照 <span class="code">15785063</span>（Normal T 無 TRT d0–365，n=73,381），沿用 41 項共變項；無荷爾蒙 10y HR 1.552（p&lt;0.0001, 0 SMD&gt;0.1），有用荷爾蒙 10y HR 1.364（p=0.164）。</li>
+            <li><strong>Outcomes 稽核</strong>：全系列分析 Index Event 兩組皆僅勾 <code>Group 1</code>；MoA 與 KM 兩個 <code>Exclude prior outcome</code> 與 <code>Compare after matching</code> 均勾選。</li>
           </ul>
         </div>
       </div>
@@ -949,14 +1053,25 @@
 </footer>
 
 <script>
-  // Tab switching
+  // Tab switching & Reviewer Quick-Jump
+  function switchTab(tabName) {
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.toggle('active', b.dataset.tab === tabName));
+    document.querySelectorAll('.tab-panel').forEach(p => p.classList.toggle('active', p.id === 'tab-' + tabName));
+  }
+  function jumpTo(tabName, elementId) {
+    switchTab(tabName);
+    setTimeout(() => {
+      const el = document.getElementById(elementId);
+      if (el) {
+        el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        el.classList.remove('highlight-flash');
+        void el.offsetWidth;
+        el.classList.add('highlight-flash');
+      }
+    }, 60);
+  }
   document.querySelectorAll('.tab-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
-      document.querySelectorAll('.tab-panel').forEach(p => p.classList.remove('active'));
-      btn.classList.add('active');
-      document.getElementById('tab-' + btn.dataset.tab).classList.add('active');
-    });
+    btn.addEventListener('click', () => switchTab(btn.dataset.tab));
   });
 
   // Data: Internal Sensitivity Analyses (10y & 5y)
@@ -1067,12 +1182,14 @@
     { label: 'S5R-A 主分析 5y (n=3,882對)', hr: 1.475, lo: 1.064, hi: 2.045, p: 'p=0.0190', sig: true },
     { label: 'S5R-A 10y MASH K75.81 (n=4,881對)', hr: 2.124, lo: 1.130, hi: 3.993, p: 'p=0.0166', sig: true, bold: true },
     { label: 'S5R-A 10y K74 硬化 (n=4,881對)', hr: 0.927, lo: 0.644, hi: 1.334, p: 'p=0.6841', sig: false },
+    { label: 'S5R-A 10y MASH+硬化複合 (n=4,762對)', hr: 1.349, lo: 0.957, hi: 1.901, p: 'p=0.0864', sig: false, bold: true },
     { label: 'S5R-A SA-K760 10y (n=4,881對)', hr: 1.587, lo: 1.307, hi: 1.928, p: 'p<0.0001', sig: true },
     { label: 'S5R-A SA-Lag2 10y (n=5,122對)', hr: 1.550, lo: 1.280, hi: 1.878, p: 'p<0.0001', sig: true },
     { label: 'S5R-A SA-GLP1 10y (n=5,402對)', hr: 1.422, lo: 1.196, hi: 1.690, p: 'p<0.0001', sig: true },
     { label: 'S5R-A SA-Alcohol 10y (n=5,157對)', hr: 1.625, lo: 1.336, hi: 1.978, p: 'p<0.0001', sig: true },
     { label: 'S5R-A TT400 10y (n=5,405對)', hr: 1.718, lo: 1.431, hi: 2.063, p: 'p<0.0001', sig: true },
-    { label: 'S5R-A TRT-NU 10y (n=830對)', hr: 1.191, lo: 0.785, hi: 1.809, p: 'p=0.4105', sig: false },
+    { label: 'S5R-A SA-Hormone(-) 無荷爾蒙 10y (3,959對)', hr: 1.552, lo: 1.254, hi: 1.919, p: 'p<0.0001', sig: true, bold: true },
+    { label: 'S5R-A SA-Hormone(+) 有用荷爾蒙 10y (848對)', hr: 1.364, lo: 0.879, hi: 2.117, p: 'p=0.1640', sig: false },
     { label: '【路線一】P3-2TA v2 10y (n=8,608對)', hr: 1.252, lo: 1.132, hi: 1.383, p: 'p<0.0001', sig: true },
     { label: '【路線二】S5-2TA 嚴格健康 10y (n=1,095對)', hr: 1.449, lo: 0.921, hi: 2.281, p: 'p=0.1065', sig: false },
     { label: '【路線二】S5-2TA-W22 5y (n=2,282對)', hr: 1.452, lo: 0.909, hi: 2.320, p: 'p=0.1168', sig: false }
@@ -1134,8 +1251,9 @@
   const queries = [
     ['主軸母體 Low T', '15755247', 'S5R-A Low T 2011-2020 (no dx metabolic disease)', '5,396', '62', 'Groups 1–8：2011–2020 首次 LG11398-1 (40–90y)，同日 0–300 + 1–365d 再次 0–300，排除 15 項確診代謝疾病、28 項肝病/癌症/酒精、既往 TRT 與 -1825..-1d 低 T'],
     ['主軸母體 Normal T', '15755366', 'S5R-A Normal T 2011-2020 (no dx metabolic disease)', '80,493', '73', '同上結構；同日 ≥300 且排除同日 0–300、1–365d 排除 0–300'],
-    ['TRT-NU 暴露組', '15757281', 'S5R-A TRT-NU start d0-180', '876', '55/77', '由 15755247 複製；新增 Group 9：9B MUST HAVE 6 TRT 碼 (RxNorm 10379, J1071, J3121, J3145, S0189, 11980)，於 9A 後 0–180d (6m) 內'],
-    ['TRT-NU 對照組', '15757397', 'S5R-A TRT-NU Ctrl no TRT d0-365', '4,246', '62/77', '由 15755247 複製；新增 Group 9：9B CANNOT HAVE 6 TRT 碼，於 9A 後 0–365d 內'],
+    ['SA-Hormone(+) Low T', '15757281', 'S5R-A TRT-NU start d0-180', '876', '55/77', '由 15755247 複製；新增 Group 9：9B MUST HAVE 6 TRT 碼 (RxNorm 10379, J1071, J3121, J3145, S0189, 11980)，於 9A 後 0–180d (6m) 內'],
+    ['SA-Hormone(-) Low T', '15757397', 'S5R-A TRT-NU Ctrl no TRT d0-365', '4,246', '62/77', '由 15755247 複製；新增 Group 9：9B CANNOT HAVE 6 TRT 碼，於 9A 後 0–365d 內'],
+    ['SA-Hormone 對照 Normal T', '15785063', 'S5R-A Normal T no TRT d0-365', '73,381', '70/75', '由 15755366 複製；新增 Group 9：9B CANNOT HAVE 6 TRT 碼，於 9A 後 0–365d 內（作為 Hormone+ 與 Hormone- 統一無荷爾蒙對照組）'],
     ['SA-GLP1 Low T', '15769132', 'S5R-A SA-GLP1 Low T', '5,404', '63/78', '新增 Group 9：9B CANNOT HAVE ATC A10BJ，於 9A 前 365d 至後 365d 內'],
     ['SA-GLP1 Normal T', '15769162', 'S5R-A SA-GLP1 Normal T', '80,459', '73/78', '同上 Group 9（貼上並回讀驗證）'],
     ['SA-Alcohol Low T', '15769199', 'S5R-A SA-Alcohol Low T', '5,157', '63/78', '新增 Group 9：9B CANNOT HAVE F10/Z71.41/R78.0/Y90/K70，於 9A 後 1–3650d 內'],
